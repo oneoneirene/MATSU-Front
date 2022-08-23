@@ -270,8 +270,8 @@
       <q-btn stretch flat label="Link" />
       <q-separator dark vertical />
       <q-btn stretch flat label="Link" /> -->
-        <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
-          style="min-width: 140px" />
+        <!-- <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
+          style="min-width: 140px" /> -->
         <!-- Drawer -->
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <q-drawer id="drawermatsu" v-model="drawer" :width="220" :breakpoint="500" side="right" overlay
@@ -331,7 +331,7 @@
                   <q-icon name="mdi-account" />
                 </q-item-section>
                 <q-item-section>
-                  {{ $t('Account') }}
+                  Account
                 </q-item-section>
               </q-item>
               <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
