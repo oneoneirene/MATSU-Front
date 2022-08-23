@@ -156,7 +156,7 @@ const routes = [
         meta: {
           title: '個人資料管理',
           login: true,
-          admin: true
+          admin: false
         }
       }
     ]

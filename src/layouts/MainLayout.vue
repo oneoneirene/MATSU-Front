@@ -326,7 +326,7 @@
                   {{ $t('Education') }}
                 </q-item-section>
               </q-item>
-              <q-item clickable v-ripple to="/Userback">
+              <q-item clickable v-ripple to="/userb">
                 <q-item-section avatar>
                   <q-icon name="mdi-account" />
                 </q-item-section>
