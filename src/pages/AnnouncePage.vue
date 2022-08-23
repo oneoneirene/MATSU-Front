@@ -82,6 +82,9 @@
           <div class="text-h5 q-mt-sm q-mb-xs">{{ activity.name }}</div>
           <div class="text-caption text-grey">
             {{ activity.description }}
+            <br>
+            <!-- 只顯示日期不要時間！！ -->
+            {{ new Date( activity.startDay ).toLocaleDateString()}}
           </div>
         </q-card-section>
         <q-card-actions>

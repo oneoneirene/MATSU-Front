@@ -275,7 +275,7 @@ const openDialog = (_id) => {
     // form.category = products[idx].category
     form.sell = activities[idx].sell
     form.description = activities[idx].description
-    form.startDay = activities[idx].startDay.toLocalString()
+    form.startDay = activities[idx].startDay
     form.endDay = activities[idx].endDay
   } else {
     form.name = ''
