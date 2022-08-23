@@ -270,8 +270,8 @@
       <q-btn stretch flat label="Link" />
       <q-separator dark vertical />
       <q-btn stretch flat label="Link" /> -->
-        <!-- <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
-          style="min-width: 140px" /> -->
+        <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
+          style="min-width: 140px" />
         <!-- Drawer -->
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <q-drawer id="drawermatsu" v-model="drawer" :width="220" :breakpoint="500" side="right" overlay
@@ -331,7 +331,7 @@
                   <q-icon name="mdi-account" />
                 </q-item-section>
                 <q-item-section>
-                  Account
+                  {{ $t('Account') }}
                 </q-item-section>
               </q-item>
               <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
@@ -354,8 +354,8 @@
 </template>
 <script setup>
 import { defineComponent, ref } from 'vue'
-// import { useQuasar } from 'quasar'
-// import { useI18n } from 'vue-i18n'
+import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/user'
 // import EssentialLink from 'components/EssentialLink.vue'
@@ -369,9 +369,9 @@ const { logout } = user
 const { isLogin, isAdmin } = storeToRefs(user)
 const drawer = ref(false)
 
-// const { locale } = useI18n({ useScope: 'global' })
+const { locale } = useI18n({ useScope: 'global' })
 // 這段把預設語言設為偵測到電腦的語言
-// locale.value = useQuasar().lang.getLocale()
+locale.value = useQuasar().lang.getLocale()
 
 // const linksList = [
 //   {
