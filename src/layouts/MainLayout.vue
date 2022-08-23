@@ -354,8 +354,8 @@
 </template>
 <script setup>
 import { defineComponent, ref } from 'vue'
-import { useQuasar } from 'quasar'
-import { useI18n } from 'vue-i18n'
+// import { useQuasar } from 'quasar'
+// import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/user'
 // import EssentialLink from 'components/EssentialLink.vue'
@@ -369,9 +369,9 @@ const { logout } = user
 const { isLogin, isAdmin } = storeToRefs(user)
 const drawer = ref(false)
 
-const { locale } = useI18n({ useScope: 'global' })
+// const { locale } = useI18n({ useScope: 'global' })
 // 這段把預設語言設為偵測到電腦的語言
-locale.value = useQuasar().lang.getLocale()
+// locale.value = useQuasar().lang.getLocale()
 
 // const linksList = [
 //   {
