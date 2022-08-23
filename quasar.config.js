@@ -13,12 +13,6 @@ const path = require('path')
 
 module.exports = configure(function (/* ctx */) {
   return {
-    // meta
-    framework: {
-      plugins: [
-        'Meta'
-      ]
-    },
     eslint: {
       // fix: true,
       // include = [],
@@ -128,7 +122,9 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Meta'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
