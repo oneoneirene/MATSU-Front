@@ -62,14 +62,17 @@ module.exports = configure(function (/* ctx */) {
     build: {
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
-        node: 'node16',
-        build: {
-          extendViteConf (viteConf) {
-            viteConf.base = ''
-          }
-        }
+        node: 'node16'
       },
-
+      alias: {
+        '@': path.join(__dirname, './src')
+      },
+      extendViteConf (viteConf) {
+        viteConf.base = ''
+      },
+      env: {
+        VITE_API: process.env.VITE_API
+      },
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
