@@ -19,10 +19,10 @@ jobs:
       # 步驟二：編譯
       - name: Install and Build
         run: |
-          npm install
-          npm run build
+          yarn install
+          yarn build
         env:
-          VITE_API: ${{ secrets.VITE_API }}
+          SERVER_URL: ${{ secrets.SERVER_URL }}
       # 步驟三：部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
