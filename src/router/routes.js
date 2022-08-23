@@ -1,5 +1,6 @@
 import MainLayout from 'layouts/MainLayout.vue'
 import AdminLayout from 'layouts/AdminLayout.vue'
+import UserLayout from 'layouts/UserLayout.vue'
 
 const routes = [
   {
@@ -138,6 +139,22 @@ const routes = [
         component: () => import('pages/admin/NewsManage.vue'),
         meta: {
           title: '最新公告管理',
+          login: true,
+          admin: true
+        }
+      }
+    ]
+  },
+  {
+    path: '/userb',
+    component: UserLayout,
+    children: [
+      {
+        path: 'Userback',
+        name: 'Userback',
+        component: () => import('pages/user/UserbackPage.vue'),
+        meta: {
+          title: '個人資料管理',
           login: true,
           admin: true
         }

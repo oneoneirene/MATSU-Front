@@ -17,13 +17,13 @@
                 <q-file v-model="form.image" show-size label="選擇圖片" filled style="max-width: 400px;margin: auto;"
                   @update:model-value="handleUpload()">
                 </q-file>
-                <!-- <q-btn flat fab bg-blue icon="mdi-plus"
+                <q-btn flat fab bg-blue icon="mdi-plus"
                   style="width:70px;height:70px;margin-top:15px;border-radius:50%;" @click="openDialog('form._id')">
-                </q-btn> -->
+                </q-btn>
                 <!-- <q-btn label="上傳" type="submit" color="blue" :loading='form.submitting' @click="openDialog(form._id)" /> -->
                 <!-- <q-dialog v-model="form.dialog" persistent>
                   <q-card style="min-width: 350px">
-                    <q-form @submit.prevent='submitForm'></q-form>
+                    <q-form @submit.prevent='submitForm'>
                       <q-card-section>
                         <q-file v-model="form.image" label="IMAGE" />
                       </q-card-section>
