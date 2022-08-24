@@ -59,7 +59,7 @@
         </q-list>
       </q-scroll-area>
 
-      <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+      <q-img class="absolute-top" :src='userinfo.image' style="height: 150px">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <!-- <img :src="avatar()"> -->
@@ -77,10 +77,43 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useUserStore } from '../stores/user'
+import Swal from 'sweetalert2'
+import { apiAuth } from '../boot/axios.js'
 
 const user = useUserStore()
 
 const drawer = ref(false)
+
+const userinfo = reactive({
+  _id: '',
+  account: '',
+  email: '',
+  name: '',
+  image: null,
+  idx: -1
+})
+
+const init = async () => {
+  try {
+    const { data } = await apiAuth.get('/users')
+    // members.splice(0, members.length)
+    // 加了{}
+    userinfo._id = data.result._id
+    userinfo.account = data.result.account
+    userinfo.email = data.result.email
+    userinfo.name = data.result.name
+    userinfo.image = data.result.image
+    // members.push({ ...data.result })
+  } catch (error) {
+    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
+init()
 </script>

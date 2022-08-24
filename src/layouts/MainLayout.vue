@@ -358,8 +358,8 @@ import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/user'
+// import Swal from 'sweetalert2'
 // import EssentialLink from 'components/EssentialLink.vue'
-
 const localeOptions = [
   { value: 'en-US', label: 'English' },
   { value: 'zh-TW', label: '繁體中文' }

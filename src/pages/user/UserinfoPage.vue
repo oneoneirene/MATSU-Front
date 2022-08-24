@@ -162,31 +162,58 @@ const init = async () => {
 init()
 
 const editForm = async () => {
+  console.log(editinfo)
+  const fd = new FormData()
+
+  for (const key in editinfo) {
+    fd.append(key, editinfo[key])
+  }
+
   try {
-    console.log(editinfo)
-    const { data } = await apiAuth.patch('/users', editinfo)
-    // editinfo._id = data.result._id
-    // editinfo.account = data.result.account
-    editinfo.email = data.result.email
-    editinfo.name = data.result.name
-    editinfo.image = data.result.image
-    init()
+    const { data } = await apiAuth.patch('/users', fd)
+
     Swal.fire({
       icon: 'success',
       title: '成功',
       text: '編輯成功'
     })
+    init()
     openflag.value = true
   } catch (error) {
-    // console.log(error)
     Swal.fire({
       icon: 'error',
-      title: '失敗',
+      title: '編輯失敗',
       text: error.isAxiosError ? error.response.data.message : error.message
     })
   }
 }
-init()
+
+// const editForm = async () => {
+//   try {
+//     console.log(editinfo)
+//     const { data } = await apiAuth.patch('/users', editinfo)
+//     // editinfo._id = data.result._id
+//     // editinfo.account = data.result.account
+//     editinfo.email = data.result.email
+//     editinfo.name = data.result.name
+//     editinfo.image = data.result.image
+//     init()
+//     Swal.fire({
+//       icon: 'success',
+//       title: '成功',
+//       text: '編輯成功'
+//     })
+//     openflag.value = true
+//   } catch (error) {
+//     // console.log(error)
+//     Swal.fire({
+//       icon: 'error',
+//       title: '失敗',
+//       text: error.isAxiosError ? error.response.data.message : error.message
+//     })
+//   }
+// }
+// init()
 
 // const goEdit = () => {
 //   openflag.value = false
