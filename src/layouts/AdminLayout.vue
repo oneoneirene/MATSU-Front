@@ -64,6 +64,14 @@
               最新公告
             </q-item-section>
           </q-item>
+          <q-item clickable v-ripple to="/admin/Userpost">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section>
+              旅遊心得
+            </q-item-section>
+          </q-item>
           <q-item clickable v-ripple to="/Index">
             <q-item-section avatar>
               <q-icon name="home" />

@@ -1,5 +1,5 @@
 <template>
-    <q-layout view="lHh Lpr lff" container style="height: 300px" class="shadow-2 rounded-borders">
+    <q-layout view="lHh Lpr lff" container class="window-height shadow-2 rounded-borders">
       <q-header elevated class="bg-cyan-8">
         <q-toolbar>
           <q-toolbar-title>Header</q-toolbar-title>
@@ -24,7 +24,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item active clickable v-ripple>
+            <q-item active clickable v-ripple to="/userb/Userinfo">
               <q-item-section avatar>
                 <q-icon name="star" />
               </q-item-section>
@@ -53,6 +53,14 @@
                 Drafts
               </q-item-section>
             </q-item>
+            <q-item clickable v-ripple to="/Index">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section>
+              回前台
+            </q-item-section>
+          </q-item>
           </q-list>
         </q-scroll-area>
 

@@ -142,6 +142,16 @@ const routes = [
           login: true,
           admin: true
         }
+      },
+      {
+        path: 'Userpost',
+        name: 'Userpost',
+        component: () => import('pages/admin/UserpostPage.vue'),
+        meta: {
+          title: '旅遊心得管理',
+          login: true,
+          admin: false
+        }
       }
     ]
   },
@@ -153,6 +163,16 @@ const routes = [
         path: 'Userback',
         name: 'Userback',
         component: () => import('pages/user/UserbackPage.vue'),
+        meta: {
+          title: '個人資料管理',
+          login: true,
+          admin: false
+        }
+      },
+      {
+        path: 'Userinfo',
+        name: 'Userinfo',
+        component: () => import('pages/user/UserinfoPage.vue'),
         meta: {
           title: '個人資料管理',
           login: true,

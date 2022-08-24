@@ -1,8 +1,8 @@
 <template>
   <q-page>
     <div class="row bg-blue" style="height:100px">
-      <q-btn flat fab round bg-blue color="white" icon="mdi-plus" style="width:70px;height:70px;margin-top:15px;border-radius:50%;"
-        @click="openDialog('')"></q-btn>
+      <q-btn flat fab round bg-blue color="white" icon="mdi-plus"
+        style="width:70px;height:70px;margin-top:15px;border-radius:50%;" @click="openDialog('')"></q-btn>
       <q-dialog seamless v-model="form.dialog" persistent>
         <q-card id="dialog">
           <!-- <q-toolbar>
@@ -14,8 +14,8 @@
             <q-card flat>
               <div class="row">
                 <div flat class="col" col="10">
-                  <q-input rounded flat primary standout v-model="form.name" :label="$t('活動名稱')"
-                    class="q-ma-md"></q-input>
+                  <q-input rounded flat primary standout v-model="form.name" :label="$t('發文者名稱')" class="q-ma-md">
+                  </q-input>
                 </div>
                 <!-- <div class="col" col="10">
                 <q-input rounded flat primary standout v-model="form.price" :label="$t('itineraryPrice')" class="q-ma-md" style="box-shadow:none"></q-input>
@@ -31,29 +31,28 @@
                     style="box-shadow:none"></q-input>
                 </div>
               </div>
+              <div class="col" col="12">
+                <q-input rounded flat primary standout v-model="form.title" :label="$t('標題')" class="q-ma-md"
+                  style="box-shadow:none"></q-input>
+              </div>
               <div class="row">
-                <!-- <div class="col" col="6">
-                <q-input rounded flat primary standout v-model="form.people" type="number" :label="$t('people')" class="q-ma-md" style="box-shadow:none"></q-input>
-              </div> -->
-                <div class="col" col="6">
-                  <div class="col" col="6">
-                    <q-file v-model="form.image" rounded standout counter :label="$t('活動圖片')"></q-file>
-                  </div>
+                <div class="col" col="12">
+                  <q-input v-model="form.description" class="q-ma-md" style="box-shadow:none" rounded standout
+                    label="撰寫心得" autogrow type="textarea" />
                 </div>
               </div>
               <div class="row">
                 <div class="col" col="12">
-                  <q-input v-model="form.description" rounded standout label="活動詳情" autogrow type="textarea" />
+                  <q-file v-model="form.image" rounded standout counter class="q-ma-md" style="box-shadow:none"
+                    :label="$t('心得圖片')"></q-file>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col" col="6">
                   <q-toggle :false-value="false" :label="`On the Shelf - ${form.sell}`" :true-value="true" color="green"
                     toggle-indeterminate="false" v-model="form.sell" />
                 </div>
               </div>
-
               <q-card-action class="text-center">
                 <q-btn type="sumbit" :label="$t('submit')" color='primary' :loading='form.submitting' v-close-popup>
                 </q-btn>
@@ -63,10 +62,9 @@
         </q-card>
       </q-dialog>
     </div>
-
     <!-- 上下架用switch -->
-    <div class="q-pa-md">
-      <q-table :grid="$q.screen.lt.md" :title="$t('活動資訊')" :rows="activities" :columns="columns" row-key="name"
+    <div>
+      <q-table :grid="$q.screen.lt.md" :title="$t('貼文管理')" :rows="exps" :columns="columns" row-key="name"
         :filter="filter" selection="multiple" v-model:selected="selected">
         <template v-slot:top-right>
           <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
@@ -76,11 +74,11 @@
           </q-input>
         </template>
         <template v-slot:header-selection="scope">
-          <q-toggle v-model="scope.selected" :key="activities.sell" />
+          <q-toggle v-model="scope.selected" :key="exps.sell" />
         </template>
 
         <template v-slot:body-selection="scope">
-          <q-toggle v-model="scope.selected" :key="activities.sell" />
+          <q-toggle v-model="scope.selected" :key="exps.sell" />
         </template>
 
         <template #body-cell-image="image">
@@ -90,7 +88,6 @@
             </q-avatar>
           </q-td>
         </template>
-
         <template #body-cell-edit="edit">
           <q-td style="text-align:right">
             <q-btn round class="bg-accent" style="width:50px;height:50px" @click="openDialog(edit.row._id)"
@@ -98,24 +95,19 @@
             <q-btn round class="bg-red" style="width:50px;height:50px" @click="confirm = true" icon="mdi-delete">
             </q-btn>
           </q-td>
-
           <q-dialog v-model="confirm" persistent>
             <q-card>
               <q-card-section class="row items-center">
                 <q-avatar icon="mdi-account-arrow-right" color="primary" text-color="white" />
                 <span class="q-ml-sm text-center q-ml-md">{{ $t('Delete') }} ?</span>
               </q-card-section>
-
               <q-card-actions align="right">
-                <q-btn flat color="primary" icon="mdi-check-circle" @click="deleteActivity(edit.row._id)"
-                  v-close-popup />
+                <q-btn flat color="primary" icon="mdi-check-circle" @click="deleteExp(edit.row._id)" v-close-popup />
                 <q-btn flat color="primary" icon="mdi-close-circle" v-close-popup />
               </q-card-actions>
             </q-card>
           </q-dialog>
-
         </template>
-
         <template v-slot:item="card">
           <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3 grid-style-transition"
             :style="card.selected ? 'transform: scale(0.95);' : ''">
@@ -169,53 +161,15 @@
                   <span class="q-ml-sm text-center q-ml-md">{{ $t('Delete') }} ?</span>
                 </q-card-section>
                 <q-card-actions align="right">
-                  <q-btn flat color="primary" icon="mdi-check-circle" @click="deleteActivity(card.row._id)"
-                    v-close-popup />
+                  <q-btn flat color="primary" icon="mdi-check-circle" @click="deleteExp(card.row._id)" v-close-popup />
                   <q-btn flat color="primary" icon="mdi-close-circle" v-close-popup />
                 </q-card-actions>
               </q-card>
             </q-dialog>
           </div>
         </template>
-
       </q-table>
-
     </div>
-
-    <!-- <div class="q-pa-lg row items-start " >
-    <q-card class="my-card col-12 col-md-6 col-lg-4" flat bordered v-for='(product, idx) in products' :key='product._id'>
-      <q-img :src='product.image' :ratio="4/3"/>
-      <q-card-section>
-        <div class="text-overline text-orange-9">${{ product.price }}</div>
-        <div class="text-h5 q-mt-sm q-mb-xs">{{product.name}}</div>
-        <div class="text-caption text-grey">
-          {{ product.startDay }} ~ {{ product.endDay }}
-        </div>
-      </q-card-section>
-      <q-card-actions>
-        <q-btn flat color="dark" label="Edit" @click="openDialog(product._id, idx)"/>
-        <q-btn flat color="primary" label="Delete" @click="deleteProduct(product._id)" />
-        <q-space />
-        <q-btn
-          color="grey"
-          round
-          flat
-          dense
-          :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-          @click="expanded = !expanded"
-        />
-      </q-card-actions>
-      <q-slide-transition>
-        <div v-show="expanded">
-          <q-separator />
-          <q-card-section class="text-subitle2">
-            {{ product.description }}
-          </q-card-section>
-        </div>
-      </q-slide-transition>
-    </q-card>
-  </div> -->
-
   </q-page>
 </template>
 <script setup>
@@ -223,23 +177,57 @@ import { reactive, ref } from 'vue'
 import { apiAuth } from '../../boot/axios'
 import Swal from 'sweetalert2'
 
-const activities = reactive([])
-// const expanded = ref(false)
+const exps = reactive([])
 const filter = ref('')
 const selected = ref([])
 const confirm = ref(false)
 const confirmSm = ref(false)
 
+const form = reactive({
+  _id: '',
+  account: '',
+  email: '',
+  name: '',
+  image: null,
+  submitting: false,
+  post: '',
+  category: '',
+  title: '',
+  description: '',
+  idx: -1,
+  dialog: false,
+  valid: false,
+  startDay: '',
+  endDay: '',
+  sell: false
+})
+console.log(form.name)
+
+// const openDialog = (_id) => {
+//   form._id = _id
+//   form.name = ''
+//   form.image = null
+//   form.dialog = true
+//   form.submitting = false
+// }
+
+// table貼文管理
 const columns = [
   {
     name: 'image',
-    label: 'image'
+    label: 'Image'
   },
   {
     name: 'name',
     required: true,
     label: 'Name',
     field: row => row.name,
+    sortable: true
+  },
+  {
+    name: 'title',
+    label: 'Title',
+    field: row => row.title,
     sortable: true
   },
   // { name: 'price', field: row => row.price, label: 'Price', sortable: true },
@@ -250,33 +238,18 @@ const columns = [
   // { name: 'iron', label: 'Iron (%)', field: 'iron', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) }
 ]
 
-const form = reactive({
-  _id: '',
-  name: '',
-  // price: 0,
-  // category: '',
-  sell: false,
-  image: null,
-  description: '',
-  idx: -1,
-  dialog: false,
-  valid: false,
-  submitting: false,
-  startDay: '',
-  endDay: ''
-})
-
 const openDialog = (_id) => {
   form._id = _id
-  const idx = _id === '' ? -1 : activities.findIndex(activity => activity._id === _id)
+  const idx = _id === '' ? -1 : exps.findIndex(exp => exp._id === _id)
   if (idx > -1) {
-    form.name = activities[idx].name
+    form.name = exps[idx].name
     // form.price = activities[idx].price
     // form.category = products[idx].category
-    form.sell = activities[idx].sell
-    form.description = activities[idx].description
-    form.startDay = activities[idx].startDay
-    form.endDay = activities[idx].endDay
+    form.sell = exps[idx].sell
+    form.description = exps[idx].description
+    form.title = exps[idx].title
+    form.startDay = exps[idx].startDay
+    form.endDay = exps[idx].endDay
   } else {
     form.name = ''
     // form.price = 0
@@ -285,6 +258,7 @@ const openDialog = (_id) => {
     form.description = ''
     form.startDay = ''
     form.endDay = ''
+    form.title = ''
   }
   form.image = null
   form.idx = idx
@@ -305,17 +279,17 @@ const submitForm = async () => {
 
   try {
     if (form._id.length === 0) {
-      const { data } = await apiAuth.post('/act/', fd)
-      activities.push(data.result)
+      const { data } = await apiAuth.post('/exp/', fd)
+      exps.push(data.result)
       Swal.fire({
         icon: 'success',
         title: '成功',
         text: '新增成功'
       })
     } else {
-      const { data } = await apiAuth.patch('/act/' + form._id, fd)
+      const { data } = await apiAuth.patch('/exp/' + form._id, fd)
       console.log('1234')
-      activities[form.idx] = data.result
+      exps[form.idx] = data.result
       Swal.fire({
         icon: 'success',
         title: '成功',
@@ -334,9 +308,9 @@ const submitForm = async () => {
   form.submitting = false
 }
 
-const deleteActivity = async (actiityId) => {
+const deleteExp = async (expId) => {
   try {
-    await apiAuth.delete('/act/' + actiityId)
+    await apiAuth.delete('/exp/' + expId)
     await Swal.fire({
       icon: 'success',
       title: '成功',
@@ -352,14 +326,41 @@ const deleteActivity = async (actiityId) => {
   }
 }
 
-// 抓後台資料
+// const submitForm = async () => {
+//   console.log(form._id)
+//   console.log(form._name)
+//   form.submitting = true
+//   // console.log(members._id)
+//   try {
+//     const { data } = await apiAuth.patch('/users/' + form._id, {
+//       name: '', image: ''
+//     })
+//     form.name = data.name
+//     form.image = data.image
+//     Swal.fire({
+//       icon: 'success',
+//       title: '成功',
+//       text: '編輯成功'
+//     })
+//     form.dialog = false
+//   } catch (error) {
+//     Swal.fire({
+//       icon: 'success',
+//       title: '失敗',
+//       text: error.isAxiosError ? error.response.data.message : error.message
+//     })
+//   }
+//   form.submitting = false
+// }
+
+// 心得
 const init = async () => {
   try {
-    const { data } = await apiAuth.get('/act/all')
-    activities.splice(0, activities.length)
+    const { data } = await apiAuth.get('/exp/all')
+    exps.splice(0, exps.length)
     // console.log(data.result)
     // console.log(typeof (data.result))
-    activities.push(...data.result)
+    exps.push(...data.result)
   } catch (error) {
     console.log(error)
     Swal.fire({
@@ -369,6 +370,9 @@ const init = async () => {
     })
   }
 }
-console.log(activities)
+console.log(exps)
 init()
+
 </script>
+<style>
+</style>
