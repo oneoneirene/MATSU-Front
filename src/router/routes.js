@@ -178,6 +178,16 @@ const routes = [
           login: true,
           admin: false
         }
+      },
+      {
+        path: 'Usercollect',
+        name: 'Usercollect',
+        component: () => import('pages/user/UsercollectionPage.vue'),
+        meta: {
+          title: '個人資料管理',
+          login: true,
+          admin: false
+        }
       }
     ]
   },

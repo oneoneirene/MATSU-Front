@@ -61,7 +61,6 @@
           </q-card>
         </div>
       </div>
-    </section>
   </q-page>
 </template>
 
@@ -141,12 +140,12 @@ const goEdit = () => {
 const editForm = async () => {
   try {
     const { data } = await apiAuth.patch('/users', editinfo)
-    // editinfo.email = data.result.email
-    // editinfo.name = data.result.name
-    // editinfo.sex = data.result.sex
-    // editinfo.birthday = data.result.birthday
-    // editinfo.address = data.result.address
-    // editinfo.phone = data.result.phone
+    editinfo.email = data.result.email
+    editinfo.name = data.result.name
+    editinfo.sex = data.result.sex
+    editinfo.birthday = data.result.birthday
+    editinfo.address = data.result.address
+    editinfo.phone = data.result.phone
     init()
     Swal.fire({
       icon: 'success',

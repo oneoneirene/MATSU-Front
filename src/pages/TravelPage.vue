@@ -61,7 +61,7 @@
         {{ exp.description }}
       </q-card-section>
         <q-card-actions align="right">
-        <q-btn flat round color="red" icon="favorite" @click="addCollection({ product: product._id, quantity: 1 })"/>
+        <q-btn flat round color="red" icon="favorite" @click="addCollection({ exp: exp._id, quantity: 1 })"/>
         <q-btn flat round color="teal" icon="bookmark" />
         <q-btn flat round color="primary" icon="share" />
       </q-card-actions>
@@ -72,6 +72,7 @@
 import { reactive, ref } from 'vue'
 import { api } from '../boot/axios'
 import Swal from 'sweetalert2'
+import { useUserStore } from '../stores/user'
 
 // 抓資料
 const exps = reactive([])
@@ -79,6 +80,9 @@ const slide = ref(1)
 const autoplay = ref(false)
 // const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 
+const user = useUserStore()
+const { addCollection } = user
+defineProps(['exp'])
 // 抓exp資料
 const init = async () => {
   try {
