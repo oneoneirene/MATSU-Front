@@ -62,7 +62,7 @@
       <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img :src="avatar()">
+            <!-- <img :src="avatar()"> -->
           </q-avatar>
           <div class="text-weight-bold">Razvan Stoenescu</div>
           <div>@rstoenescu</div>
@@ -78,7 +78,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useUserStore } from '../../stores/user'
+import { useUserStore } from '../stores/user'
 
 const user = useUserStore()
 

@@ -42,6 +42,9 @@
               <q-input v-model="editinfo.name" :rules='[rules.required]' color="black" />
               <div class="text-subtitle1 text-weight-medium">電子郵件信箱:</div>
               <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" />
+              <div class="text-subtitle1 text-weight-medium">照片上傳:</div>
+                <q-file v-model="editinfo.image" rounded standout counter :label="$t('圖片')"></q-file>
+              <!-- <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" /> -->
               <div class="q-my-xxl">
                 <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" color="black" label="取消"
                   @click='changeFlag()' />
@@ -112,7 +115,7 @@ const userinfo = reactive({
   account: '',
   email: '',
   name: '',
-  // image: null,
+  image: null,
   idx: -1
 })
 console.log(userinfo.name)
@@ -122,7 +125,7 @@ const editinfo = reactive({
   account: '',
   email: '',
   name: '',
-  // image: null,
+  image: null,
   submitting: false,
   idx: -1
 })
@@ -133,6 +136,7 @@ const goEdit = () => {
   editinfo.name = userinfo.name
   editinfo.account = userinfo.account
   editinfo.email = userinfo.email
+  editinfo.image = userinfo.image
 }
 
 const init = async () => {
@@ -144,7 +148,7 @@ const init = async () => {
     userinfo.account = data.result.account
     userinfo.email = data.result.email
     userinfo.name = data.result.name
-    // userinfo.image = data.result.image
+    userinfo.image = data.result.image
     // members.push({ ...data.result })
   } catch (error) {
     console.log(error)
@@ -165,7 +169,7 @@ const editForm = async () => {
     // editinfo.account = data.result.account
     editinfo.email = data.result.email
     editinfo.name = data.result.name
-    // editinfo.image = data.result.image
+    editinfo.image = data.result.image
     init()
     Swal.fire({
       icon: 'success',
