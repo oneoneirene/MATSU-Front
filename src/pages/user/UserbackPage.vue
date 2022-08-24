@@ -302,7 +302,7 @@
 <script setup>
 import { useQuasar } from 'quasar'
 import { reactive, ref } from 'vue'
-import { apiAuth } from '../boot/axios'
+import { apiAuth } from '../../boot/axios'
 import Swal from 'sweetalert2'
 
 const exps = ([])
