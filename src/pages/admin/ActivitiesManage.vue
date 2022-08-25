@@ -314,7 +314,6 @@ const submitForm = async () => {
       })
     } else {
       const { data } = await apiAuth.patch('/act/' + form._id, fd)
-      console.log('1234')
       activities[form.idx] = data.result
       Swal.fire({
         icon: 'success',

@@ -240,7 +240,7 @@
             </q-list>
           </q-btn-dropdown>
           <!-- 會員專區 -->
-          <q-btn-dropdown size=20px style="font-weight: bold;" stretch flat :label="$t('Account')" to="/User">
+          <q-btn-dropdown size=20px style="font-weight: bold;" stretch flat :label="$t('Account')" to="/Userinfo">
             <!-- dropdown-icon="none" -->
             <q-list>
               <q-item v-for="n in 1" :key="`x.${n}`" clickable v-close-popup tabindex="0">
@@ -250,12 +250,12 @@
               </q-item>
               <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0">
                 <q-item-section>
-                  <q-item-label>{{ $t('Myposts') }}</q-item-label>
+                  <q-item-label>{{ $t('MyLikes') }}</q-item-label>
                 </q-item-section>
               </q-item>
-              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0">
+              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0" :to="'/Article'">
                 <q-item-section>
-                  <q-item-label>{{ $t('MyLikes') }}</q-item-label>
+                  <q-item-label>{{ $t('Myposts') }}</q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>

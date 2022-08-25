@@ -72,6 +72,14 @@
               旅遊心得
             </q-item-section>
           </q-item>
+          <q-item clickable v-ripple to="/admin/Atmanage">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section>
+              投稿管理
+            </q-item-section>
+          </q-item>
           <q-item clickable v-ripple to="/Index">
             <q-item-section avatar>
               <q-icon name="home" />

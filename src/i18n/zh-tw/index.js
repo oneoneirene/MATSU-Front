@@ -30,7 +30,7 @@ export default {
   SeniorHighSchool: '高中',
   Others: '其他',
   MyAc: '個人資料管理',
-  Myposts: '貼文管理',
+  Myposts: '我要投稿',
   MyLikes: '我的收藏',
   DongJyu: '東莒國小',
   RenAi: '仁愛國小',

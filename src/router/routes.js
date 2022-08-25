@@ -86,6 +86,26 @@ const routes = [
           login: false,
           admin: false
         }
+      },
+      {
+        path: 'Article',
+        name: 'Article',
+        component: () => import('pages/user/UserarticlesPage.vue'),
+        meta: {
+          title: '我要投稿',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: 'Userinfo',
+        name: 'Userinfo',
+        component: () => import('pages/user/UserinfoPage.vue'),
+        meta: {
+          title: '個人資料管理',
+          login: true,
+          admin: false
+        }
       }
     ]
   },
@@ -152,6 +172,16 @@ const routes = [
           login: true,
           admin: false
         }
+      },
+      {
+        path: 'Atmanage',
+        name: 'Atmanage',
+        component: () => import('pages/admin/PostmanagePage.vue'),
+        meta: {
+          title: '投稿管理',
+          login: true,
+          admin: true
+        }
       }
     ]
   },
@@ -163,16 +193,6 @@ const routes = [
         path: 'Userback',
         name: 'Userback',
         component: () => import('pages/user/UserbackPage.vue'),
-        meta: {
-          title: '個人資料管理',
-          login: true,
-          admin: false
-        }
-      },
-      {
-        path: 'Userinfo',
-        name: 'Userinfo',
-        component: () => import('pages/user/UserinfoPage.vue'),
         meta: {
           title: '個人資料管理',
           login: true,

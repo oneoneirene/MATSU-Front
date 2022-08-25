@@ -1,8 +1,5 @@
 <template>
   <div>
-    <q-btn round color="primary" icon="shopping_cart" />
-    <q-btn round color="secondary" icon="navigation" />
-    <q-btn round color="amber" glossy text-color="black" icon="layers_clear" />
     <q-splitter v-model="splitterModel" style="height: 1000px">
       <template v-slot:before>
         <q-tabs v-model="tab" vertical class="text-teal">
@@ -70,28 +67,61 @@
       <template v-slot:after>
         <q-tab-panels v-model="tab" animated swipeable vertical transition-prev="jump-up" transition-next="jump-up">
           <!-- 個人資料管理 -->
-          <q-tab-panel name="mails">
-            <div class="text-h4 q-mb-md text-center" style="margin-top:10px">個人資料管理</div>
-            <div class="q-pa-md" style="max-width:300;margin: auto;">
-              <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-                <span>ID</span>
-                <q-input readonly filled v-model="form._id" label="Your ID *" />
-                <span>帳號</span>
-                <q-input readonly  filled v-model="form.account" label="Your Account *" lazy-rules maxlength="20"
-                  :rules='rules.account' />
-                <span>會員暱稱</span>
-                <q-input filled readonly type="text" v-model="form.name" label="Your Name *" lazy-rules :rules='rules.name' />
-                <span>電子信箱</span>
-                <q-input readonly filled type="text" v-model="form.email" label="Your Email *" lazy-rules
-                  :rules='rules.email' />
-                <q-toggle v-model="accept" label="I accept the license and terms" />
-                <div>
-                  <q-btn label="修改" type="submit" color="primary" />
-                  <q-btn label="重置" type="reset" color="primary" flat class="q-ml-sm" />
-                </div>
-              </q-form>
+              <section class="container">
+      <div class="row q-mt-none q-mt-lg-xl">
+        <!-- <div class="col-2 gt-md">
+          <div class="text-h6">我的帳戶</div>
+          <router-link :to="'/user'">
+            <div class="text-subtitle1 q-my-lg">個人資料</div>
+          </router-link>
+          <router-link :to="'/order'">
+            <div class="text-subtitle1 q-my-lg">訂單查詢</div>
+          </router-link>
+        </div> -->
+        <div class="col-12 col-lg-10">
+          <div class="flex items-center text-center q-mb-lg q-mt-lg q-mt-lg-none">
+            <div class="text-h4 text-weight-medium" v-if='openflag'>個人資料管理</div>
+            <div class="text-h4 text-weight-medium" v-if='!openflag'>修改資料</div>
+            <q-space />
+          </div>
+          <div class="text-body1 q-mb-md">個人資訊頁面</div>
+          <q-card flat bordered v-if="openflag" class="q-pa-md">
+            <div class="text-subtitle1 text-weight-bold">ID:</div>
+            <div class="text-subtitle1 q-mb-md">{{ userinfo._id }}</div>
+            <div class="text-subtitle1 text-weight-bold">帳號:</div>
+            <div class="text-subtitle1 q-mb-md">{{ userinfo.account }}</div>
+            <div class="text-subtitle1 text-weight-bold">暱稱:</div>
+            <div class="text-subtitle1 q-mb-md">{{ userinfo.name }}</div>
+            <div class="text-subtitle1 text-weight-bold">電子郵件信箱:</div>
+            <div class="text-subtitle1 q-mb-md">{{ userinfo.email }}</div>
+            <div class="q-my-xxl">
+              <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" label="登出" color="black" @click='logout' />
+              <q-btn label="修改" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="black" @click='goEdit()' />
             </div>
-          </q-tab-panel>
+          </q-card>
+          <q-card flat bordered v-else class="col-3 row q-pa-md">
+            <q-form @submit.prevent='editForm()'>
+              <div class="text-subtitle1 text-weight-medium">ID:</div>
+              <q-input v-model="editinfo._id" readonly :rules='[rules.required]' color="black" />
+              <div class="text-subtitle1 text-weight-medium">帳號:</div>
+              <q-input v-model="editinfo.account" readonly  :rules='[rules.required]' color="black" />
+              <div class="text-subtitle1 text-weight-medium">暱稱:</div>
+              <q-input v-model="editinfo.name" :rules='[rules.required]' color="black" />
+              <div class="text-subtitle1 text-weight-medium">電子郵件信箱:</div>
+              <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" />
+              <div class="text-subtitle1 text-weight-medium">照片上傳:</div>
+                <q-file v-model="editinfo.image" rounded standout counter :label="$t('圖片')"></q-file>
+              <!-- <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" /> -->
+              <div class="q-my-xxl">
+                <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" color="black" label="取消"
+                  @click='changeFlag()' />
+                <q-btn type='submit' unelevated class="q-py-sm q-px-xxl text-subtitle2" color="black" label="確定" />
+              </div>
+            </q-form>
+          </q-card>
+        </div>
+      </div>
+    </section>
           <!-- 貼文管理 -->
           <q-tab-panel name="alarms">
             <div class="text-h4 q-mb-md text-center">貼文管理</div>
@@ -306,6 +336,104 @@ import { useQuasar } from 'quasar'
 import { reactive, ref } from 'vue'
 import { apiAuth } from '../boot/axios'
 import Swal from 'sweetalert2'
+import { useUserStore } from '../stores/user'
+
+// 修改資料
+const user = useUserStore()
+const { logout } = user
+const openflag = ref(true)
+const changeFlag = () => {
+  if (openflag.value) {
+    openflag.value = false
+  } else {
+    openflag.value = true
+  }
+}
+
+const rules = reactive({
+  required (v) {
+    return !!v || '必填'
+  }
+})
+
+const userinfo = reactive({
+  _id: '',
+  account: '',
+  email: '',
+  name: '',
+  image: null,
+  idx: -1
+})
+console.log(userinfo.name)
+
+const editinfo = reactive({
+  _id: '',
+  account: '',
+  email: '',
+  name: '',
+  image: null,
+  submitting: false,
+  idx: -1
+})
+
+const goEdit = () => {
+  openflag.value = false
+  editinfo._id = userinfo._id
+  editinfo.name = userinfo.name
+  editinfo.account = userinfo.account
+  editinfo.email = userinfo.email
+  editinfo.image = userinfo.image
+}
+
+const init = async () => {
+  try {
+    const { data } = await apiAuth.get('/users')
+    // members.splice(0, members.length)
+    // 加了{}
+    userinfo._id = data.result._id
+    userinfo.account = data.result.account
+    userinfo.email = data.result.email
+    userinfo.name = data.result.name
+    userinfo.image = data.result.image
+    // members.push({ ...data.result })
+  } catch (error) {
+    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
+init()
+
+const editForm = async () => {
+  console.log(editinfo)
+  const fd = new FormData()
+
+  for (const key in editinfo) {
+    fd.append(key, editinfo[key])
+  }
+
+  try {
+    const { data } = await apiAuth.patch('/users', fd)
+
+    Swal.fire({
+      icon: 'success',
+      title: '成功',
+      text: '編輯成功'
+    })
+    init()
+    openflag.value = true
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '編輯失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
+init()
 
 const exps = ([])
 const $q = useQuasar()
@@ -313,10 +441,7 @@ const tab = ref('mails')
 const splitterModel = ref(20)
 const image = ref(null)
 const imageUrl = ref('')
-const handleUpload = () => {
-  console.log('handleUpload is triggered')
-  if (image.value) { imageUrl.value = URL.createObjectURL(image.value) }
-}
+
 // const Account = ref(null)
 const AccountRef = ref(null)
 // const Password = ref(null)
@@ -346,27 +471,6 @@ const form = reactive({
 })
 console.log(form.name)
 
-const rules = reactive({
-  account: [
-    v => !!v || '帳號必填',
-    v => (v.length >= 4 && v.length <= 20) || '帳號長度為 4 到 20 個字',
-    v => /^[a-zA-Z0-9]+$/.test(v) || '帳號只能由英數字組成'
-  ],
-  password: [
-    v => !!v || '密碼必填',
-    v => (v.length >= 4 && v.length <= 15) || '密碼長度為 4 到 20 個字',
-    v => /^[a-zA-Z0-9]+$/.test(v) || '密碼只能由英數字組成'
-  ],
-  email: [
-    v => !!v || 'Required',
-    v => /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/.test(v) || 'Wrong'
-  ],
-  name: [
-    v => !!v || '名稱必填',
-    v => (v.length >= 2 && v.length <= 7) || '長度為 2 到 7 個字'
-  ]
-})
-
 // const openDialog = (_id) => {
 //   form._id = _id
 //   form.name = ''
@@ -375,36 +479,6 @@ const rules = reactive({
 //   form.submitting = false
 // }
 
-// submit不會動
-const onSubmit = () => {
-  if (accept.value !== true) {
-    $q.notify({
-      color: 'red-5',
-      textColor: 'white',
-      icon: 'warning',
-      message: 'You need to accept the license and terms first'
-    })
-  } else {
-    $q.notify({
-      color: 'green-4',
-      textColor: 'white',
-      icon: 'cloud_done',
-      message: 'Submitted'
-    })
-  }
-}
-
-const onReset = () => {
-  form.account.value = null
-  form.name.value = null
-  form._id.value = null
-  form.email.value = null
-
-  AccountRef.value.resetValidation()
-  PasswordRef.value.resetValidation()
-  NameRef.value.resetValidation()
-  EmailRef.value.resetValidation()
-}
 // table貼文管理
 
 const columns = [
@@ -616,28 +690,6 @@ const rows2 = [
 //   }
 //   form.submitting = false
 // }
-const init = async () => {
-  try {
-    const { data } = await apiAuth.get('/users')
-    // members.splice(0, members.length)
-    // 加了{}
-    console.log(data.result)
-    form._id = data.result._id
-    form.account = data.result.account
-    form.email = data.result.email
-    form.name = data.result.name
-    form.image = data.result.image
-    // members.push({ ...data.result })
-  } catch (error) {
-    console.log(error)
-    Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
-    })
-  }
-}
-init()
 
 // 心得
 const init2 = async () => {

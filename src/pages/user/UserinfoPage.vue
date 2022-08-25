@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <section class="container">
-      <div class="row q-mt-none q-mt-lg-xl">
+      <div class="row q-mt-none q-mt-lg-xl justify-center text-center align-center">
         <!-- <div class="col-2 gt-md">
           <div class="text-h6">我的帳戶</div>
           <router-link :to="'/user'">
@@ -11,14 +11,15 @@
             <div class="text-subtitle1 q-my-lg">訂單查詢</div>
           </router-link>
         </div> -->
-        <div class="col-12 col-lg-10">
-          <div class="flex items-center text-center q-mb-lg q-mt-lg q-mt-lg-none">
-            <div class="text-h4 text-weight-medium" v-if='openflag'>個人資料管理</div>
-            <div class="text-h4 text-weight-medium" v-if='!openflag'>修改資料</div>
+        <div class="col-12 col-lg-4">
+          <div class="flex items-center justify-center  text-center q-mb-lg q-mt-lg q-mt-lg-none">
+            <!-- <div class="text-h4 text-center text-weight-medium" v-if='openflag'>個人資料管理</div>
+            <div class="text-h4 text-weight-medium" v-if='!openflag'>修改資料</div> -->
             <q-space />
           </div>
           <div class="text-body1 q-mb-md">個人資訊頁面</div>
           <q-card flat bordered v-if="openflag" class="q-pa-md">
+            <q-img :src="userinfo.image"></q-img>
             <div class="text-subtitle1 text-weight-bold">ID:</div>
             <div class="text-subtitle1 q-mb-md">{{ userinfo._id }}</div>
             <div class="text-subtitle1 text-weight-bold">帳號:</div>
@@ -28,12 +29,13 @@
             <div class="text-subtitle1 text-weight-bold">電子郵件信箱:</div>
             <div class="text-subtitle1 q-mb-md">{{ userinfo.email }}</div>
             <div class="q-my-xxl">
-              <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" label="登出" color="black" @click='logout' />
+              <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" label="登出" color="black" @click='logout' to="/Login"/>
               <q-btn label="修改" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="black" @click='goEdit()' />
             </div>
           </q-card>
-          <q-card flat bordered v-else class="col-3 row q-pa-md">
+          <q-card flat bordered v-else class="q-pa-md flex items-center justify-center text-center">
             <q-form @submit.prevent='editForm()'>
+              <q-img :src="editinfo.image"></q-img>
               <div class="text-subtitle1 text-weight-medium">ID:</div>
               <q-input v-model="editinfo._id" readonly :rules='[rules.required]' color="black" />
               <div class="text-subtitle1 text-weight-medium">帳號:</div>
@@ -43,7 +45,7 @@
               <div class="text-subtitle1 text-weight-medium">電子郵件信箱:</div>
               <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" />
               <div class="text-subtitle1 text-weight-medium">照片上傳:</div>
-                <q-file v-model="editinfo.image" rounded standout counter :label="$t('圖片')"></q-file>
+                <q-file v-model="editinfo.image" standout counter :label="$t('圖片')"></q-file>
               <!-- <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" /> -->
               <div class="q-my-xxl">
                 <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" color="black" label="取消"
