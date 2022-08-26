@@ -39,7 +39,8 @@
               </div>
             </q-card-section>
             <q-card-actions class="q-px-md">
-              <q-btn unelevated color="blue" size="lg" class="full-width" label="Submit" :loading='form.submitting' v-close-popup type='submit'/>
+              <q-btn unelevated color="blue" size="lg" class="full-width" label="Submit" :loading='form.submitting'
+                v-close-popup type='submit' />
             </q-card-actions>
             <q-card-actions class="q-px-md q-ma-none">
               <q-btn unelevated color="blue" size="lg" class="full-width" label="Reset" />
@@ -68,7 +69,7 @@ const form = reactive({
   startDay: '',
   endDay: '',
   category: '',
-  sell: false,
+  sell: true,
   image: null,
   valid: false,
   submitting: false

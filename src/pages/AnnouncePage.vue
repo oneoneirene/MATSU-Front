@@ -1,21 +1,22 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-lg">
     <!-- 最新 -->
-    <h5 style="text-align:center">最新消息</h5>
-      <div class="q-col-gutter-md q-ma-xs row items-start" v-for="(info, b) in infos" :key="b">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <q-img :src="info.image" height="300px">
-          <div id="caption" class="absolute-right text-subtitle1 text-center">
-            by {{ info.name }}
-            <br>
-            {{ info.title }}
-            <br>
+    <h5 class="q-ma-md" style="text-align:center">最新消息</h5>
+    <q-separator class="q-ma-md" color="blue" inset />
+    <div class="q-gutter-md q-ma-xs q-mx-xl row justify-center items-start">
+      <div class="news col" v-for="(info, b) in infos" :key="b">
+        <q-img :src="info.image" height="320px">
+          <div id="caption" class="absolute-center text-subtitle1 text-center">
+            <div class="text">
+              <!-- by {{ info.name }} -->
+            </div>
+            <div class="text-weight-bold text-h6">
+              {{ info.title }}
+            </div>
             {{ info.description }}
           </div>
         </q-img>
       </div>
-    <div class="col-2"></div>
     </div>
     <!-- <div class="q-pa-lg q-ma-lg">
       <q-carousel v-model="slide" swipeable animated padding arrows navigation navigation-icon="radio_button_unchecked"
@@ -36,7 +37,7 @@
             </div>
           </q-scroll-area>
         </q-carousel-slide> -->
-        <!-- <q-carousel-slide name="tv" class="text-center">
+    <!-- <q-carousel-slide name="tv" class="text-center">
           <q-scroll-area class="fit">
             <q-icon name="live_tv" size="56px" />
             <div class="q-mt-md">
@@ -70,26 +71,29 @@
             </div>
           </q-scroll-area>
         </q-carousel-slide> -->
-      <!-- </q-carousel>
+    <!-- </q-carousel>
     </div> -->
     <!-- 活動 -->
-    <h5 style="text-align:center">活動資訊</h5>
+    <h5 class="q-mb-md" style="text-align:center">活動資訊</h5>
+    <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-pa-md row justify-center items-center q-gutter-md">
-      <q-card class="my-card" flat bordered v-for="(activity, i) in activities" :key="i">
-        <q-img :src='activity.image' :ratio="4/4"/>
+      <q-card class="my-card col-2" flat bordered v-for="(activity, i) in activities" :key="i">
+        <q-img :src='activity.image' :ratio="4 / 4" />
         <q-card-section>
           <!-- <div class="text-overline text-orange-9">Overline</div> -->
           <div class="text-h5 q-mt-sm q-mb-xs">{{ activity.name }}</div>
-          <div class="text-caption text-grey">
-            {{ activity.description }}
+          <div class="text-h7 text-grey">
+            {{ activity.poster }}
             <br>
             <!-- 只顯示日期不要時間！！ -->
-            {{ new Date( activity.startDay ).toLocaleDateString()}}
+            {{ new Date(activity.startDay).toLocaleDateString() }} － {{ new Date(activity.endDay
+              ).toLocaleDateString()
+            }}
           </div>
         </q-card-section>
         <q-card-actions>
-          <q-btn flat color="dark" label="Share" />
-          <q-btn flat color="primary" label="Book" />
+          <!-- <q-btn flat color="dark" label="Share" /> -->
+          <q-btn flat color="primary" class="text-h6" label="前往報名" :href='activity.link' target="_blank" />
           <q-space />
           <q-btn color="grey" round flat dense :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
             @click="expanded = !expanded" />
@@ -97,18 +101,19 @@
         <q-slide-transition>
           <div v-show="expanded">
             <q-separator />
-            <q-card-section class="text-subitle2">
-              {{ lorem }}
+            <q-card-section class="text-h7">
+              {{ activity.description }}
             </q-card-section>
           </div>
         </q-slide-transition>
       </q-card>
     </div>
     <!-- 社區 -->
-    <h5 style="text-align:center">社區公告</h5>
-    <div class="q-col-gutter-md q-ma-md row items-start">
+    <h5 class="q-mb-md" style="text-align:center">社區公告</h5>
+    <q-separator class="q-ma-md" color="blue" inset />
+    <div class="q-col-gutter-lg q-ma-lg row items-start" style="width:80%;margin: auto;">
       <div class="col-4" v-for="(community, b) in communities" :key="b">
-        <q-img :src="community.image" :ratio="16/9">
+        <q-img :src="community.image" :ratio="16 / 9">
           <div id="communitycp" class="absolute-bottom text-subtitle1 text-center">
             {{ community.description }}
             <br>
@@ -118,7 +123,8 @@
       </div>
     </div>
     <!-- 徵才 -->
-    <h5 style="text-align:center">徵才訊息</h5>
+    <h5 class="q-mb-md" style="text-align:center">徵才訊息</h5>
+    <q-separator class="q-ma-md" color="blue" inset />
     <!-- <div id="Intinernary-product">
       <div class="row">
         <div class="col col-12 col-md-6 col-lg-3 q-pa-sm" v-for='product in products' :key='product._id'>
@@ -135,7 +141,7 @@
         <q-separator dark inset />
         <q-card-section>
           {{ product.job }}
-        <div class="text-subtitle2">{{ product.phone }}</div>
+          <div class="text-subtitle2">{{ product.phone }}</div>
         </q-card-section>
       </q-card>
     </div>
@@ -161,8 +167,9 @@
       </q-dialog>
     </div> -->
     <!-- 影音 -->
-    <h5 style="text-align:center">影音推薦</h5>
-    <div id="youtube" class="q-gutter-md">
+    <h5 class="q-mb-md" style="text-align:center">影音推薦</h5>
+    <q-separator class="q-ma-lg" color="blue" inset />
+    <div id="youtube" class="q-gutter-md q-mt-lg">
       <q-carousel animated v-model="slide" infinite>
         <q-carousel-slide name="soft-jazz">
           <q-video class="absolute-full" src="https://www.youtube.com/embed/bmdpTjkAD1Q" />
@@ -369,11 +376,6 @@ iframe {
   margin: auto;
 }
 
-.my-card {
-  width: 100%;
-  max-width: 350px
-}
-
 #jobcard {
   margin: 10px;
 }
@@ -390,7 +392,7 @@ iframe {
   }
 
   #caption {
-    width: 500px;
+    width: 100%;
   }
 }
 

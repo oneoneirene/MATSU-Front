@@ -13,9 +13,13 @@
           <q-form v-model='form.valid' @submit.prevent='submitForm'>
             <q-card flat>
               <div class="row">
-                <div flat class="col" col="10">
+                <div flat class="col-6">
                   <q-input rounded flat primary standout v-model="form.name" :label="$t('活動名稱')"
                     class="q-ma-md"></q-input>
+                  </div>
+                  <div class="col-6">
+                  <q-input rounded flat primary standout v-model="form.poster" :label="$t('發文者')" class="q-ma-md"
+                    style="box-shadow:none"></q-input>
                 </div>
                 <!-- <div class="col" col="10">
                 <q-input rounded flat primary standout v-model="form.price" :label="$t('itineraryPrice')" class="q-ma-md" style="box-shadow:none"></q-input>
@@ -35,18 +39,20 @@
                 <!-- <div class="col" col="6">
                 <q-input rounded flat primary standout v-model="form.people" type="number" :label="$t('people')" class="q-ma-md" style="box-shadow:none"></q-input>
               </div> -->
-                <div class="col" col="6">
-                  <div class="col" col="6">
-                    <q-file v-model="form.image" rounded standout counter :label="$t('活動圖片')"></q-file>
+                  <div class="col-12">
+                    <q-file v-model="form.image" standout rounded counter :label="$t('活動圖片')" class="q-ma-md" ></q-file>
                   </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <q-input v-model="form.description" rounded standout label="活動詳情" autogrow type="textarea" class="q-ma-md"/>
                 </div>
               </div>
               <div class="row">
-                <div class="col" col="12">
-                  <q-input v-model="form.description" rounded standout label="活動詳情" autogrow type="textarea" />
+                <div class="col-12">
+                  <q-input v-model="form.link" rounded standout label="活動連結" autogrow type="textarea" class="q-ma-md"/>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col" col="6">
                   <q-toggle :false-value="false" :label="`On the Shelf - ${form.sell}`" :true-value="true" color="green"
@@ -263,7 +269,9 @@ const form = reactive({
   valid: false,
   submitting: false,
   startDay: '',
-  endDay: ''
+  endDay: '',
+  poster: '',
+  link: ''
 })
 
 const openDialog = (_id) => {
@@ -277,6 +285,8 @@ const openDialog = (_id) => {
     form.description = activities[idx].description
     form.startDay = activities[idx].startDay
     form.endDay = activities[idx].endDay
+    form.poster = activities[idx].poster
+    form.link = activities[idx].link
   } else {
     form.name = ''
     // form.price = 0
@@ -285,6 +295,8 @@ const openDialog = (_id) => {
     form.description = ''
     form.startDay = ''
     form.endDay = ''
+    form.poster = ''
+    form.link = ''
   }
   form.image = null
   form.idx = idx

@@ -1,37 +1,35 @@
 <template>
-  <div class="q-pa">
-    <q-carousel
-      arrows
-      animated
-      v-model="slide"
-      height="400px"
-    >
-      <q-carousel-slide name="first" img-src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80">
-        <div class="absolute-bottom custom-caption">
+  <div>
+    <q-carousel animated v-model="slide" navigation infinite class="window-width" height="500px" :autoplay="autoplay" arrows
+      transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
+      @mouseleave="autoplay = true">
+      <q-carousel-slide :name="1"
+        img-src="https://drive.google.com/uc?export=view&id=1l4XZNZaJ9Gm0YkMPhvQM776qDrOz9HqS"
+        class="row justify-center text-center items-center">
+        <div class="custom-caption">
           <div class="text-h2">First stop</div>
           <div class="text-subtitle1">Mountains</div>
         </div>
       </q-carousel-slide>
-      <q-carousel-slide name="second" img-src="https://cdn.quasar.dev/img/parallax1.jpg">
-        <div class="absolute-bottom custom-caption">
-          <div class="text-h2">Second stop</div>
-          <div class="text-subtitle1">Famous City</div>
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide name="third" img-src="https://cdn.quasar.dev/img/parallax2.jpg">
-        <div class="absolute-bottom custom-caption">
-          <div class="text-h2">Third stop</div>
-          <div class="text-subtitle1">Famous Bridg</div>
-        </div>
-      </q-carousel-slide>
+      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
+      <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
+      <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
     </q-carousel>
+  </div>
+  <div class="index window-width row q-mt-none q-col-gutter-xs">
+    <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>
+    <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>
+    <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>
+    <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-const slide = ref('first')
+const slide = ref('1')
+const autoplay = ref(true)
 </script>
+
 <style lang="sass" scoped>
 .custom-caption
   text-align: left

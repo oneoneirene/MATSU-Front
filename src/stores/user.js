@@ -39,7 +39,8 @@ export const useUserStore = defineStore({
           title: '成功',
           text: '登入成功'
         })
-        this.router.push('/User')
+        // 登入後的頁面
+        this.router.push('/Userinfo')
       } catch (error) {
         Swal.fire({
           icon: 'error',

@@ -138,7 +138,7 @@ const goEdit = () => {
   editinfo.name = userinfo.name
   editinfo.account = userinfo.account
   editinfo.email = userinfo.email
-  editinfo.image = userinfo.image
+  editinfo.image = null
 }
 
 const init = async () => {
@@ -168,7 +168,8 @@ const editForm = async () => {
   const fd = new FormData()
 
   for (const key in editinfo) {
-    fd.append(key, editinfo[key])
+    if (key === 'image' && editinfo.avatar === null) continue
+    else fd.append(key, editinfo[key])
   }
 
   try {

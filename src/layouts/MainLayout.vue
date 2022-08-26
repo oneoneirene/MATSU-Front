@@ -265,6 +265,9 @@
         <q-btn size=15px v-if='!isLogin' to="/Register" flat style="margin-right:30px" :label="$t('SignIn')"></q-btn>
         <q-btn size=15px v-if='isLogin' @click='logout' flat label="logout"></q-btn>
         <q-btn size=15px v-if='isLogin && isAdmin' to='/admin' flat label="admin"></q-btn>
+        <q-avatar v-if='isLogin'>
+        <img :src="userinfo.image">
+        </q-avatar>
 
         <!-- <q-separator dark vertical />
       <q-btn stretch flat label="Link" />
@@ -353,11 +356,13 @@
   </q-layout>
 </template>
 <script setup>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, reactive } from 'vue'
 import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/user'
+import Swal from 'sweetalert2'
+import { apiAuth } from '../boot/axios'
 // import Swal from 'sweetalert2'
 // import EssentialLink from 'components/EssentialLink.vue'
 const localeOptions = [
@@ -373,6 +378,34 @@ const { locale } = useI18n({ useScope: 'global' })
 // 這段把預設語言設為偵測到電腦的語言
 locale.value = useQuasar().lang.getLocale()
 
+const userinfo = reactive({
+  // _id: '',
+  // account: '',
+  // email: '',
+  // name: '',
+  image: null
+  // idx: -1
+})
+
+const init = async () => {
+  try {
+    const { data } = await apiAuth.get('/users')
+    // userinfo._id = data.result._id
+    // userinfo.account = data.result.account
+    // userinfo.email = data.result.email
+    // userinfo.name = data.result.name
+    userinfo.image = data.result.image
+    // members.push({ ...data.result })
+  } catch (error) {
+    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
+init()
 // const linksList = [
 //   {
 //     title: 'Docs',
