@@ -1,10 +1,10 @@
 <template>
   <div class="q-pa-lg">
     <!-- 最新 -->
-    <h5 class="q-ma-md" style="text-align:center">最新消息</h5>
+    <h5 class="q-ma-md text-weight-bold" style="text-align:center">最新消息</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-gutter-md q-ma-xs q-mx-xl row justify-center items-start">
-      <div class="news col" v-for="(info, b) in infos" :key="b">
+      <div class="news col shadow-2" v-for="(info, b) in infos" :key="b">
         <q-img :src="info.image" height="320px">
           <div id="caption" class="absolute-center text-subtitle1 text-center">
             <div class="text">
@@ -74,7 +74,7 @@
     <!-- </q-carousel>
     </div> -->
     <!-- 活動 -->
-    <h5 class="q-mb-md" style="text-align:center">活動資訊</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">活動資訊</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-pa-md row justify-center items-center q-gutter-md">
       <q-card class="my-card col-2" flat bordered v-for="(activity, i) in activities" :key="i">
@@ -109,21 +109,27 @@
       </q-card>
     </div>
     <!-- 社區 -->
-    <h5 class="q-mb-md" style="text-align:center">社區公告</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">社區公告</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-col-gutter-lg q-ma-lg row items-start" style="width:80%;margin: auto;">
-      <div class="col-4" v-for="(community, b) in communities" :key="b">
+      <div class="col-4 rounded" v-for="(community, b) in communities" :key="b">
         <q-img :src="community.image" :ratio="16 / 9">
           <div id="communitycp" class="absolute-bottom text-subtitle1 text-center">
+            <div class="text-weight-bold text-h6">
+              {{ community.title }}
+            </div>
             {{ community.description }}
             <br>
             by {{ community.name }}
+            <div class="absolute-right-bottom">
+              {{ new Date(community.startDay).toLocaleDateString() }}
+            </div>
           </div>
         </q-img>
       </div>
     </div>
     <!-- 徵才 -->
-    <h5 class="q-mb-md" style="text-align:center">徵才訊息</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">徵才訊息</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <!-- <div id="Intinernary-product">
       <div class="row">
@@ -167,7 +173,7 @@
       </q-dialog>
     </div> -->
     <!-- 影音 -->
-    <h5 class="q-mb-md" style="text-align:center">影音推薦</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">影音推薦</h5>
     <q-separator class="q-ma-lg" color="blue" inset />
     <div id="youtube" class="q-gutter-md q-mt-lg">
       <q-carousel animated v-model="slide" infinite>

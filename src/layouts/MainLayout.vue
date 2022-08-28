@@ -113,19 +113,19 @@
             </q-list>
           </q-btn-dropdown>
           <!-- 交通資訊 -->
-          <q-btn-dropdown size=20px style="font-weight: bold;" stretch flat :label="$t('Transportation')" to="/Trans">
+          <q-btn-dropdown size=20px style="font-weight: bold;" stretch flat :label="$t('Transportation')">
             <q-list>
-              <q-item v-for="n in 1" :key="`x.${n}`" clickable v-close-popup tabindex="0">
+              <q-item v-for="n in 1" :key="`x.${n}`" clickable v-close-popup tabindex="0" href="https://www.tsa.gov.tw/tsaLZN/zh/flights.aspx?id=1021&airFlyLine=2#" target="_blank">
                 <q-item-section>
                   <q-item-label>{{ $t('Airline') }}</q-item-label>
                 </q-item-section>
               </q-item>
-              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0">
+              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0" href="http://client.matsu.idv.tw/lienchiang/" target="_blank">
                 <q-item-section>
                   <q-item-label>{{ $t('Vessel') }}</q-item-label>
                 </q-item-section>
               </q-item>
-              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0">
+              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0" href="http://www.matsu-ebus.tw/" target="_blank">
                 <q-item-section>
                   <q-item-label>{{ $t('Bus') }}</q-item-label>
                 </q-item-section>
@@ -347,7 +347,10 @@
     <!-- footer -->
     <q-footer reveal elevated>
       <q-toolbar style="background:#7cade7">
-        <q-toolbar-title>Footer</q-toolbar-title>
+        <q-toolbar-title class="text-subtitle1">
+          Copyright © 2022 Irene
+          <br>
+        </q-toolbar-title>
       </q-toolbar>
     </q-footer>
     <q-page-container>
