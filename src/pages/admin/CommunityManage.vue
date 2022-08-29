@@ -323,7 +323,6 @@ const submitForm = async () => {
       })
     } else {
       const { data } = await apiAuth.patch('/community/' + form._id, fd)
-      console.log('1234')
       communities[form.idx] = data.result
       Swal.fire({
         icon: 'success',

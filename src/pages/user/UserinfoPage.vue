@@ -1,41 +1,33 @@
 <template>
   <q-page>
     <section class="container">
-      <div class="row q-mt-none q-mt-lg-xl justify-center text-center align-center">
-        <!-- <div class="col-2 gt-md">
-          <div class="text-h6">我的帳戶</div>
-          <router-link :to="'/user'">
-            <div class="text-subtitle1 q-my-lg">個人資料</div>
-          </router-link>
-          <router-link :to="'/order'">
-            <div class="text-subtitle1 q-my-lg">訂單查詢</div>
-          </router-link>
-        </div> -->
-        <div class="col-12 col-lg-4">
-          <div class="flex items-center justify-center  text-center q-mb-lg q-mt-lg q-mt-lg-none">
-            <!-- <div class="text-h4 text-center text-weight-medium" v-if='openflag'>個人資料管理</div>
-            <div class="text-h4 text-weight-medium" v-if='!openflag'>修改資料</div> -->
-            <q-space />
+          <div class="text-h5 text-weight-bold q-ma-lg q-mt-xl text-center">個人資訊管理</div>
+          <div class="info">
+          <q-card flat v-if="openflag" class="q-pa-md row bg-blue-2 justify-center text-start align-center" style="height:fit-content">
+          <div class="image wrap col-md-2 col-xs-7 justify-center text-center items-center align-center q-mr-lg">
+            <br>
+            <q-img :src="userinfo.image" style="border-radius:50%;border:5px solid white"></q-img>
+            <br>
           </div>
-          <div class="text-body1 q-mb-md">個人資訊頁面</div>
-          <q-card flat bordered v-if="openflag" class="q-pa-md">
-            <q-img :src="userinfo.image"></q-img>
+          <div class="wrap col-md-2 col-xs-6 q-ml-lg">
+            <br>
+            <br>
             <div class="text-subtitle1 text-weight-bold">ID:</div>
-            <div class="text-subtitle1 q-mb-md">{{ userinfo._id }}</div>
+            <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo._id }}</div>
             <div class="text-subtitle1 text-weight-bold">帳號:</div>
-            <div class="text-subtitle1 q-mb-md">{{ userinfo.account }}</div>
+            <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo.account }}</div>
             <div class="text-subtitle1 text-weight-bold">暱稱:</div>
-            <div class="text-subtitle1 q-mb-md">{{ userinfo.name }}</div>
+            <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo.name }}</div>
             <div class="text-subtitle1 text-weight-bold">電子郵件信箱:</div>
-            <div class="text-subtitle1 q-mb-md">{{ userinfo.email }}</div>
-            <div class="q-my-xxl">
+            <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo.email }}</div>
+            <div class="q-my-xxl justify-center text-center items-center align-center">
               <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" label="登出" color="black" @click='logout' to="/Login"/>
-              <q-btn label="修改" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="black" @click='goEdit()' />
+              <q-btn label="修改" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="primary" @click='goEdit()' />
             </div>
+          </div>
           </q-card>
-          <q-card flat bordered v-else class="q-pa-md flex items-center justify-center text-center">
+          <q-card flat v-else class="q-pa-md flex items-center justify-center text-center">
             <q-form @submit.prevent='editForm()'>
-              <q-img :src="editinfo.image"></q-img>
               <div class="text-subtitle1 text-weight-medium">ID:</div>
               <q-input v-model="editinfo._id" readonly :rules='[rules.required]' color="black" />
               <div class="text-subtitle1 text-weight-medium">帳號:</div>
@@ -44,7 +36,7 @@
               <q-input v-model="editinfo.name" :rules='[rules.required]' color="black" />
               <div class="text-subtitle1 text-weight-medium">電子郵件信箱:</div>
               <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" />
-              <div class="text-subtitle1 text-weight-medium">照片上傳:</div>
+              <div class="text-subtitle1 text-weight-medium">圖片上傳:</div>
                 <q-file v-model="editinfo.image" standout counter :label="$t('圖片')"></q-file>
               <!-- <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" /> -->
               <div class="q-my-xxl">
@@ -55,7 +47,8 @@
             </q-form>
           </q-card>
         </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
     </section>
     <!-- <div class="text-h4 q-mb-md text-center" style="margin-top:10px">個人資料管理</div>
             <div class="q-pa-md" style="max-width:300;margin: auto;">

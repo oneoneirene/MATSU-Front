@@ -10,13 +10,13 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         /> -->
-        <q-toolbar-title class="text-h4" style="max-width:200px;min-height: 100px;">
-          <div class="title" style="max-height: 100px;position: absolute;top:50%;transform: translateY(-50%);">
+        <q-toolbar-title class="text-h4" style="max-width:250px;min-height: 100px;position: ;">
+          <div class="title" style="font-size: 30px;max-height: 50px;position: absolute;top:38%;transform: translateY(-50%);left: 120px;">
             {{ $t('Matsu') }}
             <!-- <div class="text-subtitle1 no-margin no-padding">Matsu</div> -->
           </div>
+          <q-img src="../imgs/matsulogo.png" style="width:200px;position:relative;top:20px;"></q-img>
         </q-toolbar-title>
-
         <!-- <div id="q-app" style="margin: auto;">
         <q-btn flat class="mg-md text-h6">首頁
         </q-btn>

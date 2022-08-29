@@ -4,7 +4,7 @@
     <h5 class="q-ma-md text-weight-bold" style="text-align:center">最新消息</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-gutter-md q-ma-xs q-mx-xl row justify-center items-start">
-      <div class="news col shadow-2" v-for="(info, b) in infos" :key="b">
+      <div class="news col-md col-xs-12 shadow-2" v-for="(info, b) in infos" :key="b">
         <q-img :src="info.image" height="320px">
           <div id="caption" class="absolute-center text-subtitle1 text-center">
             <div class="text">
@@ -77,7 +77,7 @@
     <h5 class="q-mb-md text-weight-bold" style="text-align:center">活動資訊</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-pa-md row justify-center items-center q-gutter-md">
-      <q-card class="my-card col-2" flat bordered v-for="(activity, i) in activities" :key="i">
+      <q-card class="my-card col-md-2" flat bordered v-for="(activity, i) in activities" :key="i">
         <q-img :src='activity.image' :ratio="4 / 4" />
         <q-card-section>
           <!-- <div class="text-overline text-orange-9">Overline</div> -->
@@ -111,18 +111,18 @@
     <!-- 社區 -->
     <h5 class="q-mb-md text-weight-bold" style="text-align:center">社區公告</h5>
     <q-separator class="q-ma-md" color="blue" inset />
-    <div class="q-col-gutter-lg q-ma-lg row items-start" style="width:80%;margin: auto;">
-      <div class="col-4 rounded" v-for="(community, b) in communities" :key="b">
+    <div class="q-col-gutter-lg justify-center q-ma-lg row items-start" style="margin: auto;">
+      <div id="community" class="col-md-6 col-xs-12 rounded" v-for="(community, b) in communities" :key="b">
         <q-img :src="community.image" :ratio="16 / 9">
           <div id="communitycp" class="absolute-bottom text-subtitle1 text-center">
             <div class="text-weight-bold text-h6">
               {{ community.title }}
             </div>
             {{ community.description }}
-            <br>
-            by {{ community.name }}
+            <!-- <br> -->
+            <!-- by {{ community.name }} -->
             <div class="absolute-right-bottom">
-              {{ new Date(community.startDay).toLocaleDateString() }}
+              <!-- {{ new Date(community.startDay).toLocaleDateString() }} -->
             </div>
           </div>
         </q-img>
@@ -192,9 +192,9 @@
 
       <div class="row justify-center">
         <q-btn-toggle glossy v-model="slide" :options="[
-          { label: 'Soft Jazz', value: 'soft-jazz' },
-          { label: 'Rihanna', value: 'Rihanna' },
-          { label: 'Ibiza Mix', value: 'ibiza' }
+          { label: 'MATSU', value: 'soft-jazz' },
+          { label: 'MATSU', value: 'Rihanna' },
+          { label: 'MATSU', value: 'ibiza' }
         ]" />
       </div>
     </div>
@@ -400,6 +400,10 @@ iframe {
   #caption {
     width: 100%;
   }
+
+  #community {
+    width: 25%;
+  }
 }
 
 /* mini pad */
@@ -413,6 +417,9 @@ iframe {
 @media (max-width: 767px) {
   .header {
     padding: 0px;
+  }
+  #caption {
+    width: 350px;
   }
 }
 </style>

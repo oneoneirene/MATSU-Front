@@ -11,9 +11,9 @@
           <div class="text-subtitle1">Mountains</div>
         </div>
       </q-carousel-slide>
-      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-      <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-      <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+      <q-carousel-slide :name="2" img-src="../imgs/carousel2.jpg" />
+      <q-carousel-slide :name="3" img-src="https://www.matsu.idv.tw/attach/matsu-45124064335ecb4c7c9524a49e0fe49d.jpeg"/>
+      <q-carousel-slide :name="4" img-src="https://s.newtalk.tw/album/news/419/5edf476d2a226.jpg" />
     </q-carousel>
   </div>
   <div class="index window-width row q-mt-none q-col-gutter-xs">
