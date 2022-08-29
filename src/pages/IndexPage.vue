@@ -16,7 +16,7 @@
       <q-carousel-slide :name="4" img-src="https://s.newtalk.tw/album/news/419/5edf476d2a226.jpg" />
     </q-carousel>
   </div>
-  <div class="index window-width row q-mt-none q-col-gutter-xs">
+  <div class="index window-width row q-mt-none q-col-gutter-y-xs">
     <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>
     <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>
     <div class="picture col-xs-6 col-md-3"><q-img class="" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></div>

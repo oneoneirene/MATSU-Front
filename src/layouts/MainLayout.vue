@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar id="toolbar" style="background:#7cade7">
+      <q-toolbar id="toolbar" style="background:#064984">
         <!-- <q-btn
           flat
           dense
@@ -261,13 +261,13 @@
             </q-list>
           </q-btn-dropdown>
         </div>
-        <q-btn size=15px v-if='!isLogin' to="/Login" flat :label="$t('LogIn')"></q-btn>
-        <q-btn size=15px v-if='!isLogin' to="/Register" flat style="margin-right:30px" :label="$t('SignIn')"></q-btn>
-        <q-btn size=15px v-if='isLogin' @click='logout' flat label="logout"></q-btn>
-        <q-btn size=15px v-if='isLogin && isAdmin' to='/admin' flat label="admin"></q-btn>
-        <q-avatar v-if='isLogin'>
+        <q-btn id=login size=15px v-if='!isLogin' to="/Login" flat :label="$t('LogIn')"></q-btn>
+        <q-btn id=signin size=15px v-if='!isLogin' to="/Register" flat style="margin-right:30px" :label="$t('SignIn')"></q-btn>
+        <q-btn id=logout size=15px v-if='isLogin' @click='logout' flat :label="$t('Logout')"></q-btn>
+        <q-btn id=admin size=15px v-if='isLogin && isAdmin' to='/admin' flat label="admin"></q-btn>
+        <!-- <q-avatar v-if='isLogin'>
         <img :src="userinfo.image">
-        </q-avatar>
+        </q-avatar> -->
 
         <!-- <q-separator dark vertical />
       <q-btn stretch flat label="Link" />
@@ -337,6 +337,12 @@
                   {{ $t('Account') }}
                 </q-item-section>
               </q-item>
+              <q-item clickable v-ripple>
+                <q-btn size=15px v-if='!isLogin' to="/Login" flat :label="$t('LogIn')"></q-btn>
+                <q-btn size=15px v-if='!isLogin' to="/Register" flat style="margin-right:30px" :label="$t('SignIn')"></q-btn>
+                <q-btn size=15px v-if='isLogin' @click='logout' flat :label="$t('Logout')"></q-btn>
+                <q-btn size=15px v-if='isLogin && isAdmin' to='/admin' flat label="admin"></q-btn>
+              </q-item>
               <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
                 style="padding: 15px;" />
             </q-list>
@@ -346,7 +352,7 @@
     </q-header>
     <!-- footer -->
     <q-footer reveal elevated>
-      <q-toolbar style="background:#7cade7">
+      <q-toolbar style="background:#064984">
         <q-toolbar-title class="text-subtitle1">
           Copyright © 2022 Irene
           <br>
@@ -490,6 +496,12 @@ defineComponent({
 @media (max-width: 767px) {
   .header {
     padding: 0px;
+  }
+  #admin {
+    display: none;
+  }
+  #logout{
+    display: none;
   }
 }
 </style>

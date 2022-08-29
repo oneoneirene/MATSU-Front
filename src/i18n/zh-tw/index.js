@@ -41,5 +41,16 @@ export default {
   DongYin: '東引國中小',
   ChungShan: '中山國中',
   MatsuH: '馬祖高中',
-  Resources: '資源中心'
+  Resources: '資源中心',
+  Signup: '前往報名',
+  Hint: '還沒有帳號？註冊一個吧！',
+  Personal: '個人資料管理',
+  Paccount: '帳號',
+  Pemail: '電子郵件信箱',
+  Pname: '暱稱',
+  Pimage: '上傳頭像',
+  Logout: '登出',
+  Edit: '修改',
+  Ok: '完成',
+  Cancel: '取消'
 }

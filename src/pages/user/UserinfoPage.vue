@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <section class="container">
-          <div class="text-h5 text-weight-bold q-ma-lg q-mt-xl text-center">個人資訊管理</div>
+          <div class="text-h5 text-weight-bold q-ma-lg q-mt-xl text-center">{{ $t('Personal') }}</div>
           <div class="info">
           <q-card flat v-if="openflag" class="q-pa-md row bg-blue-2 justify-center text-start align-center" style="height:fit-content">
           <div class="image wrap col-md-2 col-xs-7 justify-center text-center items-center align-center q-mr-lg">
@@ -14,15 +14,15 @@
             <br>
             <div class="text-subtitle1 text-weight-bold">ID:</div>
             <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo._id }}</div>
-            <div class="text-subtitle1 text-weight-bold">帳號:</div>
+            <div class="text-subtitle1 text-weight-bold">{{ $t('Paccount') }}:</div>
             <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo.account }}</div>
-            <div class="text-subtitle1 text-weight-bold">暱稱:</div>
+            <div class="text-subtitle1 text-weight-bold">{{ $t('Pname') }}:</div>
             <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo.name }}</div>
-            <div class="text-subtitle1 text-weight-bold">電子郵件信箱:</div>
+            <div class="text-subtitle1 text-weight-bold">{{ $t('Pemail') }}:</div>
             <div class="text-subtitle1 text-center bg-white q-mb-md">{{ userinfo.email }}</div>
             <div class="q-my-xxl justify-center text-center items-center align-center">
-              <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" label="登出" color="black" @click='logout' to="/Login"/>
-              <q-btn label="修改" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="primary" @click='goEdit()' />
+              <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" :label="$t('Logout')" color="black" @click='logout' to="/Login"/>
+              <q-btn :label="$t('Edit')" class="q-py-sm q-px-xxl text-subtitle2" unelevated color="primary" @click='goEdit()' />
             </div>
           </div>
           </q-card>
@@ -30,19 +30,19 @@
             <q-form @submit.prevent='editForm()'>
               <div class="text-subtitle1 text-weight-medium">ID:</div>
               <q-input v-model="editinfo._id" readonly :rules='[rules.required]' color="black" />
-              <div class="text-subtitle1 text-weight-medium">帳號:</div>
+              <div class="text-subtitle1 text-weight-medium">{{ $t('Paccount') }}:</div>
               <q-input v-model="editinfo.account" readonly  :rules='[rules.required]' color="black" />
-              <div class="text-subtitle1 text-weight-medium">暱稱:</div>
+              <div class="text-subtitle1 text-weight-medium">{{ $t('Pname') }}:</div>
               <q-input v-model="editinfo.name" :rules='[rules.required]' color="black" />
-              <div class="text-subtitle1 text-weight-medium">電子郵件信箱:</div>
+              <div class="text-subtitle1 text-weight-medium">{{ $t('Pemail') }}:</div>
               <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" />
-              <div class="text-subtitle1 text-weight-medium">圖片上傳:</div>
+              <div class="text-subtitle1 text-weight-medium">{{ $t('Pimage') }}:</div>
                 <q-file v-model="editinfo.image" standout counter :label="$t('圖片')"></q-file>
               <!-- <q-input v-model="editinfo.email" :rules='[rules.required]' color="black" /> -->
               <div class="q-my-xxl">
-                <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" color="black" label="取消"
+                <q-btn outline class="q-py-sm q-px-xxl text-subtitle2 q-mr-md" color="black" :label="$t('Cancel')"
                   @click='changeFlag()' />
-                <q-btn type='submit' unelevated class="q-py-sm q-px-xxl text-subtitle2" color="black" label="確定" />
+                <q-btn type='submit' unelevated class="q-py-sm q-px-xxl text-subtitle2" color="black" :label="$t('Ok')"/>
               </div>
             </q-form>
           </q-card>
@@ -50,6 +50,7 @@
         <!-- </div> -->
       <!-- </div> -->
     </section>
+
     <!-- <div class="text-h4 q-mb-md text-center" style="margin-top:10px">個人資料管理</div>
             <div class="q-pa-md" style="max-width:300;margin: auto;">
               <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">

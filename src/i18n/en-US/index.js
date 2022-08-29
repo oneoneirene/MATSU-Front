@@ -6,7 +6,7 @@ export default {
   success: 'Action was successful',
   information: 'information',
   Announcement: 'Announcement',
-  Matsu: 'Matsu',
+  Matsu: 'Matsu.com',
   Transportation: 'Transportation',
   Accommodation: 'Accommodation',
   Travel: 'Travel',
@@ -44,5 +44,16 @@ export default {
   DongYin: 'DongYin',
   ChungShan: 'ChungShan',
   MatsuH: 'Matsu',
-  Resources: 'Resources'
+  Resources: 'Resources',
+  Signup: 'Sign Up',
+  Hint: 'Not reigistered? Created an Account!',
+  Personal: 'Personal Information Management',
+  Paccount: 'Account',
+  Pemail: 'E-mail',
+  Pname: 'Name',
+  Pimage: 'Upload Image',
+  Logout: 'Logout',
+  Edit: 'Edit',
+  Ok: 'Ok',
+  Cancel: 'Cancel'
 }

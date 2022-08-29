@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-lg">
     <!-- 最新 -->
-    <h5 class="q-ma-md text-weight-bold" style="text-align:center">最新消息</h5>
+    <h5 class="q-ma-md text-weight-bold" style="text-align:center;">{{ $t('New') }}</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-gutter-md q-ma-xs q-mx-xl row justify-center items-start">
       <div class="news col-md col-xs-12 shadow-2" v-for="(info, b) in infos" :key="b">
@@ -74,14 +74,14 @@
     <!-- </q-carousel>
     </div> -->
     <!-- 活動 -->
-    <h5 class="q-mb-md text-weight-bold" style="text-align:center">活動資訊</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">{{ $t('Activities') }}</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-pa-md row justify-center items-center q-gutter-md">
       <q-card class="my-card col-md-2" flat bordered v-for="(activity, i) in activities" :key="i">
         <q-img :src='activity.image' :ratio="4 / 4" />
         <q-card-section>
           <!-- <div class="text-overline text-orange-9">Overline</div> -->
-          <div class="text-h5 q-mt-sm q-mb-xs">{{ activity.name }}</div>
+          <div class="text-h5 q-mt-sm q-mb-xs text-weight-bold">{{ activity.name }}</div>
           <div class="text-h7 text-grey">
             {{ activity.poster }}
             <br>
@@ -93,7 +93,7 @@
         </q-card-section>
         <q-card-actions>
           <!-- <q-btn flat color="dark" label="Share" /> -->
-          <q-btn flat color="primary" class="text-h6" label="前往報名" :href='activity.link' target="_blank" />
+          <q-btn flat color="primary" class="text-h6" :label="$t('Signup')" :href='activity.link' target="_blank" />
           <q-space />
           <q-btn color="grey" round flat dense :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
             @click="expanded = !expanded" />
@@ -109,11 +109,11 @@
       </q-card>
     </div>
     <!-- 社區 -->
-    <h5 class="q-mb-md text-weight-bold" style="text-align:center">社區公告</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">{{ $t('Community') }}</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <div class="q-col-gutter-lg justify-center q-ma-lg row items-start" style="margin: auto;">
       <div id="community" class="col-md-6 col-xs-12 rounded" v-for="(community, b) in communities" :key="b">
-        <q-img :src="community.image" :ratio="16 / 9">
+        <q-img :src="community.image" :ratio="16 / 9" style="border-radius:20px">
           <div id="communitycp" class="absolute-bottom text-subtitle1 text-center">
             <div class="text-weight-bold text-h6">
               {{ community.title }}
@@ -129,7 +129,7 @@
       </div>
     </div>
     <!-- 徵才 -->
-    <h5 class="q-mb-md text-weight-bold" style="text-align:center">徵才訊息</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">{{ $t('Recruitment') }}</h5>
     <q-separator class="q-ma-md" color="blue" inset />
     <!-- <div id="Intinernary-product">
       <div class="row">
@@ -139,15 +139,22 @@
       </div>
       </div> -->
     <div class="row justify-center items-center">
-      <q-card dark bordered id="jobcard" class="bg-grey-8 col-3" v-for="(product, i) in products" :key="i">
+      <q-card dark bordered id="jobcard" class="bg-accent col-md-3 col-xs-12" v-for="(product, i) in products" :key="i">
         <q-card-section>
-          <div class="text-h6">{{ product.jobtitle }}</div>
-          <div class="text-subtitle2">{{ product.name }}</div>
+          <div class="text-h6 text-weight-bold">{{ product.jobtitle }}</div>
+          <div class="text-subtitle1">{{ product.name }}</div>
         </q-card-section>
         <q-separator dark inset />
         <q-card-section>
-          {{ product.job }}
-          <div class="text-subtitle2">{{ product.phone }}</div>
+          <div class="text-subtitle2">
+            {{ product.job }}
+          </div>
+          <div class="text-subtitle1 text-weight-bold">{{ product.phone }}</div>
+          <div class="absolute-bottom-right">
+            {{ new Date(product.startDay).toLocaleDateString() }} － {{ new Date(product.endDay
+              ).toLocaleDateString()
+            }}
+            </div>
         </q-card-section>
       </q-card>
     </div>
@@ -173,8 +180,10 @@
       </q-dialog>
     </div> -->
     <!-- 影音 -->
-    <h5 class="q-mb-md text-weight-bold" style="text-align:center">影音推薦</h5>
+    <h5 class="q-mb-md text-weight-bold" style="text-align:center">{{ $t('Media') }}</h5>
     <q-separator class="q-ma-lg" color="blue" inset />
+    <q-img id="paint" src="../imgs/馬祖插畫2.png" style="width:900px;position:absolute;bottom:-10px;left:0;transform:scaleX(-1);"></q-img>
+    <q-img id="paint2" src="../imgs/馬祖插畫.jpg" style="width:900px;position:absolute;bottom:10px;right: 0;"></q-img>
     <div id="youtube" class="q-gutter-md q-mt-lg">
       <q-carousel animated v-model="slide" infinite>
         <q-carousel-slide name="soft-jazz">
@@ -410,6 +419,17 @@ iframe {
 @media (min-width: 768px) {
   .header {
     padding: 5px;
+  }
+}
+@media (max-width: 1400px) {
+  .header {
+    padding: 5px;
+  }
+  #paint{
+    display: none;
+  }
+  #paint2{
+    display: none;
   }
 }
 

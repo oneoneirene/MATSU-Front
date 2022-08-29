@@ -6,7 +6,7 @@
         <h5 class="text-h5 text-white q-my-md">Matsu</h5>
       </div>
       <div class="row">
-        <q-card square bordered class="q-pa-lg shadow-1" style="width:500px;color:#7cade7;top: 100px;">
+        <q-card square bordered class="q-pa-lg shadow-1" style="width:500px;color:#064984;top: 100px;">
           <q-form class="q-gutter-md" v-model='valid' @submit.prevent='login'>
           <div class="icon" style="text-align:center">
             <i class="fa-solid fa-circle-user" style="font-size:80px"></i>
@@ -16,14 +16,14 @@
               <q-input square filled clearable v-model="form.password" type="password" label="密碼" maxlength="20" :rules='rules.password'/>
           </q-card-section>
           <q-card-actions class="q-px-md" style="margin-top:-15px">
-            <q-btn unelevated color="blue" size="lg" class="full-width" label="Login" type='submit' :loading='loading'/>
+            <q-btn unelevated color="accent" size="lg" class="full-width" :label="$t('LogIn')" type='submit' :loading='loading'/>
           </q-card-actions>
           </q-form>
               <q-card-actions class="q-px-md">
-          <q-btn unelevated to="/Register" color="blue" size="lg" class="full-width" label="Register"  />
+          <q-btn unelevated to="/Register" color="accent" size="lg" class="full-width" :label="$t('SignIn')" />
               </q-card-actions>
           <q-card-section class="text-center q-px-md q-pb-none">
-            <p class="text-grey-6">Not reigistered? Created an Account</p>
+            <p class="text-grey-6">{{ $t('Hint') }}</p>
           </q-card-section>
         </q-card>
       </div>
