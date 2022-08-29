@@ -1,7 +1,7 @@
 <template>
   <q-page id="adminItinerary">
-    <div class="row bg-primary" style="height:100px">
-      <q-btn flat fab color="dark" icon="mdi-plus" style="width:70px;height:70px;margin-top:15px;border-radius:50%;"
+    <div class="row bg-blue" style="height:100px">
+      <q-btn flat fab color="white" icon="mdi-plus" style="width:70px;height:70px;margin-top:15px;border-radius:50%;"
         @click="openDialog('')"></q-btn>
       <q-dialog seamless v-model="form.dialog" persistent>
         <q-card id="dialog">
@@ -44,13 +44,13 @@
               </div>
             </div> -->
               <div class="row">
-                <div class="col" col="12">
-                  <q-input v-model="form.job" rounded standout label="工作詳情" autogrow type="textarea" />
+                <div class="col" col="10">
+                  <q-input v-model="form.job" rounded standout label="工作詳情" autogrow type="textarea" class="q-ma-md" />
                 </div>
               </div>
               <div class="row">
-                <div class="col" col="12">
-                  <q-input v-model="form.phone" rounded standout label="連絡電話" autogrow type="textarea" />
+                <div class="col" col="10">
+                  <q-input v-model="form.phone" rounded standout label="連絡電話" autogrow type="textarea" class="q-ma-md"/>
                 </div>
               </div>
               <div class="row">
@@ -99,9 +99,9 @@
 
         <template #body-cell-edit="edit">
           <q-td style="text-align:right">
-            <q-btn round class="bg-accent" style="width:50px;height:50px" @click="openDialog(edit.row._id)"
+            <q-btn round class="bg-blue" style="width:50px;height:50px" @click="openDialog(edit.row._id)"
               icon="mdi-circle-edit-outline"></q-btn>
-            <q-btn round class="bg-red" style="width:50px;height:50px" @click="confirm = true" icon="mdi-delete">
+            <q-btn round class="bg-pink-2" style="width:50px;height:50px" @click="confirm = true" icon="mdi-delete">
             </q-btn>
           </q-td>
 
@@ -161,9 +161,9 @@
               </q-list>
               <q-card-action class="q-mx-auto text-center">
                 <div class="flex" style="justify-content:space-around">
-                  <q-btn rounded class="text-center bg-red" @click="confirmSm = true" icon="mdi-delete"
+                  <q-btn rounded class="text-center bg-pink-2" @click="confirmSm = true" icon="mdi-delete"
                     style="width:50px;height:50px"></q-btn>
-                  <q-btn rounded class="text-center bg-accent" @click="openDialog(card.row._id)"
+                  <q-btn rounded class="text-center bg-blue" @click="openDialog(card.row._id)"
                     icon="mdi-circle-edit-outline" style="width:50px;height:50px"></q-btn>
                 </div>
               </q-card-action>

@@ -1,8 +1,8 @@
 <template>
   <q-page>
     <div class="q-pa-md row justify-center items-center q-gutter-md">
-      <q-card class="card col" col="3" v-for="(article, a) in articles" :key="a">
-        <q-img :src='article.image'/>
+      <q-card class="card col-4" v-for="(article, a) in articles" :key="a">
+        <q-img :src='article.image' :ratio="4/3"/>
         <q-card-section>
           <div class="text-h6">分類：{{ article.category }}</div>
           <div class="text-h6">標題：{{ article.title }}</div>

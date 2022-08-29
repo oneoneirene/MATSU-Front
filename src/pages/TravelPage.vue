@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <h5 style="text-align:center">景點介紹</h5>
+    <h5 class="text-weight-bold" style="text-align:center">景點介紹</h5>
       <div class="q-pa-md">
     <q-carousel
       swipeable
@@ -11,15 +11,36 @@
       infinite
       id="attractions"
     >
-      <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg">
+      <q-carousel-slide :name="1" img-src="https://www.taiwan.net.tw/pic.ashx?qp=1/big_scenic_spots/pic_C100_395_7.jpg&sizetype=3">
         <div id="caption" class="custom-caption">
-          <div class="text-h2 text-white">First stop</div>
-          <div class="text-subtitle1 text-white">Mountains</div>
+          <div class="text-h3 text-white">芹壁村</div>
+          <div class="text-h6 text-white">Qinbi Village</div>
         </div>
       </q-carousel-slide>
-      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-      <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-      <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+      <q-carousel-slide :name="2" img-src="https://www.taiwan.net.tw/pic.ashx?qp=1/big_scenic_spots/pic_10447_8.JPG&sizetype=3">
+        <div id="caption" class="custom-caption">
+          <div class="text-h3 text-white">八八坑道</div>
+          <div class="text-h6 text-white">Tunnel 88</div>
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide :name="3" img-src="https://www.taiwan.net.tw/pic.ashx?qp=1/big_scenic_spots/pic_C100_398_19.jpg&sizetype=3">
+        <div id="caption" class="custom-caption">
+          <div class="text-h3 text-white">馬祖酒廠</div>
+          <div class="text-h6 text-white">Matsu Liquor Factory Industry</div>
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide :name="4" img-src="https://www.taiwan.net.tw/pic.ashx?qp=1/big_scenic_spots/pic_A12-00213_9.jpg&sizetype=3">
+        <div id="caption" class="custom-caption">
+          <div class="text-h3 text-white">東引島燈塔</div>
+          <div class="text-h6 text-white">Dongquan Lighthouse</div>
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide :name="5" img-src="https://www.taiwan.net.tw/pic.ashx?qp=1/big_scenic_spots/pic_A12-00340_11.jpg&sizetype=3">
+        <div id="caption" class="custom-caption">
+          <div class="text-h3 text-white">戰爭和平紀念公園主題館</div>
+          <div class="text-h6 text-white">War and Peace Memorial Park Exhibition Center</div>
+        </div>
+      </q-carousel-slide>
 
       <template v-slot:control>
         <q-carousel-control
@@ -49,13 +70,16 @@
     </q-carousel>
   </div>
   </div>
-  <h5 style="text-align:center">心得分享</h5>
+  <h5 style="text-align:center" class="text-weight-bold" >心得分享</h5>
   <div class="q-pa-md row justify-center items-center q-gutter-md">
       <q-card class="expcard" v-for="(exp, a) in exps" :key="a">
       <q-img :src='exp.image' :ratio="5/4"/>
       <q-card-section>
-        <div class="text-h6">{{ exp.title }}</div>
+        <div class="text-h6 text-weight-bold">{{ exp.title }}</div>
         <div class="text-subtitle2">{{ exp.name }}</div>
+        {{ new Date(exp.startDay).toLocaleDateString() }} － {{ new Date(exp.endDay
+              ).toLocaleDateString()
+            }}
       </q-card-section>
       <q-card-section class="q-pt-none">
         {{ exp.description }}
@@ -63,7 +87,7 @@
         <q-card-actions align="right">
         <q-btn flat round color="red" icon="favorite" @click="addCollection({ exp: exp._id, quantity: 1 })"/>
         <q-btn flat round color="teal" icon="bookmark" />
-        <q-btn flat round color="primary" icon="share" />
+        <!-- <q-btn flat round color="primary" icon="share" /> -->
       </q-card-actions>
     </q-card>
   </div>

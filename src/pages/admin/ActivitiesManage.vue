@@ -99,9 +99,9 @@
 
         <template #body-cell-edit="edit">
           <q-td style="text-align:right">
-            <q-btn round class="bg-accent" style="width:50px;height:50px" @click="openDialog(edit.row._id)"
+            <q-btn round class="bg-blue" style="width:50px;height:50px" @click="openDialog(edit.row._id)"
               icon="mdi-circle-edit-outline"></q-btn>
-            <q-btn round class="bg-red" style="width:50px;height:50px" @click="confirm = true" icon="mdi-delete">
+            <q-btn round class="bg-pink-2" style="width:50px;height:50px" @click="confirm = true" icon="mdi-delete">
             </q-btn>
           </q-td>
 
@@ -161,9 +161,9 @@
               </q-list>
               <q-card-action class="q-mx-auto text-center">
                 <div class="flex" style="justify-content:space-around">
-                  <q-btn rounded class="text-center bg-red" @click="confirmSm = true" icon="mdi-delete"
+                  <q-btn rounded class="text-center bg-pink-2" @click="confirmSm = true" icon="mdi-delete"
                     style="width:50px;height:50px"></q-btn>
-                  <q-btn rounded class="text-center bg-accent" @click="openDialog(card.row._id)"
+                  <q-btn rounded class="text-center bg-blue" @click="openDialog(card.row._id)"
                     icon="mdi-circle-edit-outline" style="width:50px;height:50px"></q-btn>
                 </div>
               </q-card-action>

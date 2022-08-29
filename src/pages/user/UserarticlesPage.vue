@@ -5,7 +5,7 @@
         <h5 class="text-h5 text-white q-my-md">Matsu</h5>
       </div>
       <div class="row">
-        <q-card square bordered class="q-pa-md shadow-1" style="width:500px;color:#7cade7;top: 50px">
+        <q-card square bordered class="q-pa-md shadow-1" style="width:500px;color:#064984;top: 50px">
           <q-form @submit.prevent='submitForm'>
             <q-card-section class="row">
               <div class="text-subtitle1 text-weight-bold q-mr-md col">投稿人
@@ -39,15 +39,15 @@
               </div>
             </q-card-section>
             <q-card-actions class="q-px-md">
-              <q-btn unelevated color="blue" size="lg" class="full-width" label="Submit" :loading='form.submitting'
+              <q-btn unelevated color="accent" size="lg" class="full-width" label="Submit" :loading='form.submitting'
                 v-close-popup type='submit' />
             </q-card-actions>
-            <q-card-actions class="q-px-md q-ma-none">
+            <!-- <q-card-actions class="q-px-md q-ma-none">
               <q-btn unelevated color="blue" size="lg" class="full-width" label="Reset" />
-            </q-card-actions>
-            <q-card-section class="text-center q-px-md q-pb-none">
-              <p class="text-grey-6">123</p>
-            </q-card-section>
+            </q-card-actions> -->
+            <!-- <q-card-section class="text-center q-px-md q-pb-none">
+              <p class="text-grey-6"></p>
+            </q-card-section> -->
           </q-form>
         </q-card>
       </div>

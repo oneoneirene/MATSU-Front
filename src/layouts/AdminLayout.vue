@@ -1,15 +1,15 @@
 <template>
   <q-layout view="hhr lpr fFf">
 
-    <q-header elevated class="bg-primary text-white">
+    <q-header elevated class="bg-blue text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          Title
+        <q-toolbar-title class="text-weight-bold">
+          <!-- <q-avatar>
+            <img src="../imgs/matsulogo.png">
+          </q-avatar> -->
+          管理者後台
         </q-toolbar-title>
         <!-- <q-btn dense flat round icon="menu" @click="toggleRightDrawer" /> -->
       </q-toolbar>
@@ -66,7 +66,7 @@
           </q-item>
           <q-item clickable v-ripple to="/admin/Userpost">
             <q-item-section avatar>
-              <q-icon name="home" />
+              <q-icon name="mdi-flag" />
             </q-item-section>
             <q-item-section>
               旅遊心得
@@ -74,7 +74,7 @@
           </q-item>
           <q-item clickable v-ripple to="/admin/Atmanage">
             <q-item-section avatar>
-              <q-icon name="home" />
+              <q-icon name="mdi-note-plus" />
             </q-item-section>
             <q-item-section>
               投稿管理
@@ -97,13 +97,13 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
+    <q-footer elevated class="bg-blue text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
+          <!-- <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
+          </q-avatar> -->
+          <div> Copyright © 2022 Irene</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>

@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         /> -->
         <q-toolbar-title class="text-h4" style="max-width:250px;min-height: 100px;position: ;">
-          <div class="title" style="font-size: 30px;max-height: 50px;position: absolute;top:38%;transform: translateY(-50%);left: 120px;">
+          <div class="title" style="font-size: 30px;max-height: 50px;position: absolute;top:38%;transform: translateY(-50%);left: 120px;font-family:Pianpian, Ambarella;">
             {{ $t('Matsu') }}
             <!-- <div class="text-subtitle1 no-margin no-padding">Matsu</div> -->
           </div>
@@ -248,11 +248,11 @@
                   <q-item-label>{{ $t('MyAc') }}</q-item-label>
                 </q-item-section>
               </q-item>
-              <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0">
+              <!-- <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0">
                 <q-item-section>
                   <q-item-label>{{ $t('MyLikes') }}</q-item-label>
                 </q-item-section>
-              </q-item>
+              </q-item> -->
               <q-item v-for="n in 1" :key="`y.${n}`" clickable v-close-popup tabindex="0" :to="'/Article'">
                 <q-item-section>
                   <q-item-label>{{ $t('Myposts') }}</q-item-label>
@@ -273,10 +273,10 @@
       <q-btn stretch flat label="Link" />
       <q-separator dark vertical />
       <q-btn stretch flat label="Link" /> -->
-        <q-select v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
-          style="min-width: 140px" />
+        <q-select id="language" v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
+          style="min-width: 100px;" />
         <!-- Drawer -->
-        <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+        <q-btn flat @click="drawer = !drawer" round dense icon="menu" style="position:absolute;right:0"/>
         <q-drawer id="drawermatsu" v-model="drawer" :width="220" :breakpoint="500" side="right" overlay
           class="shadow-2">
           <q-scroll-area class="fit">
@@ -297,7 +297,7 @@
                   {{ $t('Announcement') }}
                 </q-item-section>
               </q-item>
-              <q-item clickable v-ripple to="/Trans">
+              <q-item clickable v-ripple>
                 <q-item-section avatar>
                   <q-icon name="mdi-airplane" />
                 </q-item-section>
@@ -329,7 +329,7 @@
                   {{ $t('Education') }}
                 </q-item-section>
               </q-item>
-              <q-item clickable v-ripple to="/userb">
+              <q-item clickable v-ripple to="/userinfo">
                 <q-item-section avatar>
                   <q-icon name="mdi-account" />
                 </q-item-section>
@@ -396,25 +396,25 @@ const userinfo = reactive({
   // idx: -1
 })
 
-const init = async () => {
-  try {
-    const { data } = await apiAuth.get('/users')
-    // userinfo._id = data.result._id
-    // userinfo.account = data.result.account
-    // userinfo.email = data.result.email
-    // userinfo.name = data.result.name
-    userinfo.image = data.result.image
-    // members.push({ ...data.result })
-  } catch (error) {
-    console.log(error)
-    Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: error.isAxiosError ? error.response.data.message : error.message
-    })
-  }
-}
-init()
+// const init = async () => {
+//   try {
+//     const { data } = await apiAuth.get('/users')
+//     // userinfo._id = data.result._id
+//     // userinfo.account = data.result.account
+//     // userinfo.email = data.result.email
+//     // userinfo.name = data.result.name
+//     userinfo.image = data.result.image
+//     // members.push({ ...data.result })
+//   } catch (error) {
+//     console.log(error)
+//     Swal.fire({
+//       icon: 'error',
+//       title: '失敗',
+//       text: error.isAxiosError ? error.response.data.message : error.message
+//     })
+//   }
+// }
+// init()
 // const linksList = [
 //   {
 //     title: 'Docs',
@@ -493,7 +493,7 @@ defineComponent({
 }
 
 /* mobile */
-@media (max-width: 767px) {
+@media (max-width: 1400px) {
   .header {
     padding: 0px;
   }
@@ -501,6 +501,15 @@ defineComponent({
     display: none;
   }
   #logout{
+    display: none;
+  }
+  #login{
+    display: none;
+  }
+  #signin{
+    display: none;
+  }
+  #language{
     display: none;
   }
 }
