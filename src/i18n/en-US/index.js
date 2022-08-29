@@ -55,5 +55,6 @@ export default {
   Logout: 'Logout',
   Edit: 'Edit',
   Ok: 'Ok',
-  Cancel: 'Cancel'
+  Cancel: 'Cancel',
+  Hint2: 'Already Registered? Log In!'
 }

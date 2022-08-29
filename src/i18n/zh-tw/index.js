@@ -52,5 +52,6 @@ export default {
   Logout: '登出',
   Edit: '修改',
   Ok: '完成',
-  Cancel: '取消'
+  Cancel: '取消',
+  Hint2: '已經擁有帳號？ 點擊登入！'
 }

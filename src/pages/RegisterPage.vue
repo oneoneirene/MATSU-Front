@@ -5,7 +5,7 @@
         <h5 class="text-h5 text-white q-my-md">Matsu</h5>
       </div>
       <div class="row">
-        <q-card square bordered class="q-pa-lg shadow-1" style="width:500px;color:#7cade7;top: 100px">
+        <q-card square bordered class="q-pa-lg shadow-1" style="width:500px;color:##064984;top: 100px">
           <q-form class="q-gutter-md" v-model='valid' @submit.prevent='register'>
           <q-card-section>
               <q-input square filled clearable hint="請輸入E-mail" hide-hint v-model='form.email' type="email" label="信箱" maxlength="25" :rules='rules.email'/>
@@ -14,14 +14,14 @@
               <q-input square filled clearable v-model="form.password" type="password" label="密碼" maxlength="15" :rules='rules.password'/>
           </q-card-section>
           <q-card-actions class="q-px-md" style="margin-top: -15px;">
-            <q-btn unelevated color="blue" size="lg" class="full-width" label="Register" type='submit' :loading='loading'/>
+            <q-btn unelevated color="accent" size="lg" class="full-width" :label="$t('SignIn')" type='submit' :loading='loading'/>
           </q-card-actions>
           </q-form>
               <q-card-actions class="q-px-md q-ma-none">
-          <q-btn unelevated color="blue" size="lg" class="full-width" label="LogIn" />
+          <q-btn unelevated color="accent" size="lg" class="full-width" :label="$t('LogIn')" />
               </q-card-actions>
           <q-card-section class="text-center q-px-md q-pb-none">
-            <p class="text-grey-6">Already Registered? Log In</p>
+            <p class="text-grey-6">{{ $t('Hint2') }}</p>
           </q-card-section>
         </q-card>
       </div>

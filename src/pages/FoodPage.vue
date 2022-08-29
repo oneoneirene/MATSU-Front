@@ -1,7 +1,7 @@
 <template>
   <div class="window-width">
     <q-card>
-      <q-tabs v-model="tab" dense class="text-grey text-h4 text-weight-bold" active-color="blue" indicator-color="blue" align="justify">
+      <q-tabs v-model="tab" dense class="text-grey text-h4 text-weight-bold" active-color="accent" indicator-color="blue" align="justify">
         <q-tab name="mails" icon="mdi-food-fork-drink" style="height:80px;"/>
         <q-tab name="alarms" icon="mdi-bed" />
         <q-tab name="movies" icon="mdi-wallet-giftcard" />
@@ -15,7 +15,7 @@
           <q-splitter v-model="splitterModel">
 
             <template v-slot:before>
-              <q-tabs v-model="innerTab" vertical class="text-blue text-subtitle1">
+              <q-tabs v-model="innerTab" vertical class="text-accent text-subtitle1">
                 <q-tab name="innerMails" color="middleblue" icon="mail" label="南竿鄉" />
                 <q-tab name="innerAlarms" icon="alarm" label="北竿鄉" />
                 <q-tab name="innerMovies" icon="movie" label="莒光鄉" />
@@ -569,7 +569,7 @@
         <q-tab-panel name="alarms">
           <q-splitter class="window-height" v-model="splitterModel">
             <template v-slot:before>
-              <q-tabs v-model="innerTab" vertical class="text-blue">
+              <q-tabs v-model="innerTab" vertical class="text-accent">
                 <q-tab name="innerMails" icon="mail" label="南竿鄉" />
                 <q-tab name="innerAlarms" icon="alarm" label="北竿鄉" />
                 <q-tab name="innerMovies" icon="movie" label="莒光鄉" />
@@ -987,7 +987,7 @@
           </q-splitter>
         </q-tab-panel>
 <!-- 特產 -->
-        <q-tab-panel name="movies">
+        <q-tab-panel id="special" name="movies">
           <div class="text-h6 row q-col-gutter-md">
             <div class="products col-md-3">
               <q-img
@@ -1038,11 +1038,11 @@
             </div>
             <div class="products col-md-3">
               <q-img
-                src="https://www.matsu-nsa.gov.tw/UserFiles/image/food/%E5%9C%B0%E7%93%9C%E9%A4%83.jpg">
+                src="https://www.matsu-nsa.gov.tw/UserFiles/image/food/%E4%BD%9B%E6%89%8B.jpg">
               </q-img>
               <div class="intro">
-                <div class="q-ma-md text-weight-bold text-h5 text-center">地瓜餃</div>
-                馬祖土地貧瘠，地瓜便是最好的糧食作物。地瓜餃，是馬祖道地的甜點，將地瓜與麵粉混合製成麵皮，包入以碎花生、紅糖、乾蔥、芝麻，另外再加酌量的五香粉、豬油等調製而成的餡料，外型的變化上，可以包成水餃、三角圓或咖哩角等形狀。不論是油炸或煮甜湯，另外或是蒸煮，都別有風味。咬一口，熱燙香甜的「爆漿」滋味，讓人永生難忘。
+                <div class="q-ma-md text-weight-bold text-h5 text-center">佛手</div>
+                形如其名的龜爪，雖然和藤壺是親戚，可是長得扁扁的，還有一根長長的肉柄。牠們總是躲在岩縫裡，探頭探腦地伸出頭來。牠的外表除了很像烏龜的爪子之外，也像是用來架毛筆的筆架，或是雙手合十的手掌，因此馬祖居民都稱牠為「筆架」或「佛手」，是在台灣極為少見的鮮貝類。
               </div>
             </div>
             <div class="products col-md-3">
@@ -1056,11 +1056,11 @@
             </div>
             <div class="products col-md-3">
               <q-img
-                src="https://www.matsu-nsa.gov.tw/UserFiles/image/food/%E5%9C%B0%E7%93%9C%E9%A4%83.jpg">
+                src="https://www.matsu-nsa.gov.tw/UserFiles/image/food/food.jpg">
               </q-img>
               <div class="intro">
-                <div class="q-ma-md text-weight-bold text-h5 text-center">地瓜餃</div>
-                馬祖土地貧瘠，地瓜便是最好的糧食作物。地瓜餃，是馬祖道地的甜點，將地瓜與麵粉混合製成麵皮，包入以碎花生、紅糖、乾蔥、芝麻，另外再加酌量的五香粉、豬油等調製而成的餡料，外型的變化上，可以包成水餃、三角圓或咖哩角等形狀。不論是油炸或煮甜湯，另外或是蒸煮，都別有風味。咬一口，熱燙香甜的「爆漿」滋味，讓人永生難忘。
+                <div class="q-ma-md text-weight-bold text-h5 text-center">繼光餅</div>
+                繼光餅的名稱由來，是來自明朝武將戚繼光，當時將行軍乾糧做成餅狀，讓士兵以繩串起掛於胸前以利攜帶並食用。馬祖所賣的繼光餅，是僅存以傳統貼爐窯烤製成，吃起來有一種麵粉的焦香與厚實的咬勁，絕對是來馬祖不能錯過的點心！近年為了推廣健康飲食，繼光餅一改過往油炸的烹調方式，改以烤箱烘烤，類似漢堡，中間夾上火腿與煎蛋，故俗稱「馬祖漢堡」。
               </div>
             </div>
           </div>
