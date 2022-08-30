@@ -226,8 +226,8 @@
                   </div>
                 </q-tab-panel>
                 <!-- 北竿鄉 -->
-                <q-tab-panel name="innerAlarms">
-                  <div id="food" class="q-pa-md row q-col-gutter-xs">
+                <q-tab-panel name="innerAlarms" class="window-height">
+                  <div id="food" class="row q-col-gutter-xs">
                     <q-card class="my-card col-md-3 col-xs-12">
                       <q-img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2936&w=960&h=640">
                         <div class="absolute-bottom text-h6">
@@ -344,7 +344,7 @@
                 </q-tab-panel>
                 <!-- 莒光鄉 -->
                 <q-tab-panel name="innerMovies">
-                  <div id="food" class="q-pa-md row q-col-gutter-xs">
+                  <div id="food" class="row q-col-gutter-xs">
                     <q-card class="my-card col-md-3 col-xs-12">
                       <q-img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2394&w=960&h=640">
                         <div class="absolute-bottom text-h6">
@@ -385,6 +385,8 @@
                       </q-img>
                       <q-card-section>
                         東莒島上唯二的小吃店之一，餐點好吃份量夠、價位合理、環境整潔，是許多觀光客到東莒的必吃美食小店。
+                        <br>
+                        <br><br>
                       </q-card-section>
                       <q-card-section>
                         <hr class="q-mt-none">
@@ -429,7 +431,7 @@
                 </q-tab-panel>
                 <!-- 東引鄉 -->
                 <q-tab-panel name="innerHome">
-                  <div id="food" class="q-pa-md row q-col-gutter-xs">
+                  <div id="food" class="row q-col-gutter-xs">
                     <q-card class="my-card col-md-3 col-xs-12">
                       <q-img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2924&w=960&h=640">
                         <div class="absolute-bottom text-h6">

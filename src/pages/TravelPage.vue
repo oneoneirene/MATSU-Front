@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <h5 class="text-weight-bold" style="text-align:center">{{ $t('Attractions') }}</h5>
-      <div class="q-pa-md">
+      <div class>
     <q-carousel
       swipeable
       animated
@@ -72,8 +72,8 @@
   </div>
   <h5 style="text-align:center" class="text-weight-bold" >{{ $t('Experience') }}</h5>
   <div class="q-pa-md row justify-center items-center q-gutter-md">
-      <q-card class="expcard" v-for="(exp, a) in exps" :key="a">
-      <q-img :src='exp.image' :ratio="5/4"/>
+      <q-card class="expcard col-md-2" v-for="(exp, a) in exps" :key="a">
+      <q-img :src='exp.image' :ratio="4/3"/>
       <q-card-section>
         <div class="text-h6 text-weight-bold">{{ exp.title }}</div>
         <div class="text-subtitle2">{{ exp.name }}</div>

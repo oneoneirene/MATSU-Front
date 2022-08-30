@@ -395,6 +395,13 @@ iframe {
   margin: 10px;
 }
 
+.news:hover{
+  cursor: pointer;
+}
+#community:hover{
+  cursor: pointer;
+}
+
 /* pad */
 @media (min-width: 1200px) {
   .header {
