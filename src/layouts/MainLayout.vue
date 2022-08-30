@@ -355,6 +355,7 @@
       <q-toolbar style="background:#064984">
         <q-toolbar-title class="text-subtitle1">
           Copyright © 2022 Irene
+          本網站為學習用途，無商業使用。圖片、文字多取自網路。
           <br>
         </q-toolbar-title>
       </q-toolbar>

@@ -103,7 +103,9 @@
           <!-- <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar> -->
-          <div> Copyright © 2022 Irene</div>
+          <div>
+          Copyright © 2022 Irene
+          本網站為學習用途，無商業使用。圖片、文字多取自網路。</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
