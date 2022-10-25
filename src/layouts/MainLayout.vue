@@ -274,7 +274,7 @@
       <q-separator dark vertical />
       <q-btn stretch flat label="Link" /> -->
         <q-select id="language" v-model="locale" :options="localeOptions" label="Change Language" emit-value map-options
-          style="min-width: 100px;" />
+          />
         <!-- Drawer -->
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" style="position:absolute;right:0"/>
         <q-drawer id="drawermatsu" v-model="drawer" :width="220" :breakpoint="500" side="right" overlay
@@ -297,7 +297,7 @@
                   {{ $t('Announcement') }}
                 </q-item-section>
               </q-item>
-              <q-item clickable v-ripple>
+              <q-item clickable v-ripple href="https://www.tsa.gov.tw/tsaLZN/zh/flights.aspx?id=1021&airFlyLine=2#" target="_blank">
                 <q-item-section avatar>
                   <q-icon name="mdi-airplane" />
                 </q-item-section>
@@ -490,6 +490,9 @@ defineComponent({
 @media (min-width: 768px) {
   .header {
     padding: 5px;
+  }
+  #language{
+  min-width: 100px;
   }
 }
 
