@@ -72,7 +72,7 @@
 </div> -->
         <div class="gt-md menu row justify-center items-center" style="margin:auto;height: 100px;">
           <q-btn size=20px style="font-weight: bold;" to="/index" stretch flat :label="$t('Index')"></q-btn>
-          <!-- 公告資訊 -->
+          <!-- 公告資訊1 -->
           <q-btn-dropdown size=20px style="font-weight: bold;" stretch flat :label="$t('Announcement')" to="/Announce">
             <q-list>
               <!-- <q-item-label header>Folders</q-item-label> -->
