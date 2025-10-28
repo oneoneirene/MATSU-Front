@@ -3,17 +3,17 @@
     <q-carousel animated v-model="slide" navigation infinite class="window-width" height="500px" :autoplay="autoplay"
       arrows transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
       @mouseleave="autoplay = true">
-      <q-carousel-slide class="justify-center text-center items-center" :name="2" img-src="../imgs/carousel2.jpg">
+      <q-carousel-slide class="justify-center text-center items-center" :name="1" img-src="../imgs/carousel2.jpg">
         <div>
           <q-img src="../imgs/matsu.gif" style="width:500px"></q-img>
         </div>
       </q-carousel-slide>
-      <q-carousel-slide class="justify-center text-center items-center" :name="3" img-src="https://www.matsu.idv.tw/attach/matsu-45124064335ecb4c7c9524a49e0fe49d.jpeg">
+      <q-carousel-slide class="justify-center text-center items-center" :name="2" img-src="https://www.matsu.idv.tw/attach/matsu-45124064335ecb4c7c9524a49e0fe49d.jpeg">
         <div>
           <q-img src="../imgs/matsu.gif" style="width:500px"></q-img>
         </div>
       </q-carousel-slide>
-      <q-carousel-slide class="justify-center text-center items-center" :name="4" img-src="https://s.newtalk.tw/album/news/419/5edf476d2a226.jpg">
+      <q-carousel-slide class="justify-center text-center items-center" :name="3" img-src="https://s.newtalk.tw/album/news/419/5edf476d2a226.jpg">
         <div>
           <q-img src="../imgs/matsu.gif" style="width:500px"></q-img>
         </div>
