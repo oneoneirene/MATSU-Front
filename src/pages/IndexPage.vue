@@ -3,12 +3,6 @@
     <q-carousel animated v-model="slide" navigation infinite class="window-width" height="500px" :autoplay="autoplay"
       arrows transition-prev="slide-right" transition-next="slide-left" @mouseenter="autoplay = false"
       @mouseleave="autoplay = true">
-      <q-carousel-slide :name="1" img-src="https://drive.google.com/uc?export=view&id=1l4XZNZaJ9Gm0YkMPhvQM776qDrOz9HqS"
-        class="justify-center text-center items-center">
-        <div>
-          <q-img src="../imgs/matsu.gif" style="width:500px"></q-img>
-        </div>
-      </q-carousel-slide>
       <q-carousel-slide class="justify-center text-center items-center" :name="2" img-src="../imgs/carousel2.jpg">
         <div>
           <q-img src="../imgs/matsu.gif" style="width:500px"></q-img>
